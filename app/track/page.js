@@ -53,7 +53,7 @@ export default function TrackPage() {
       </div>
       <div className="track-orders-list">
         <div className="track-order-item">
-          <img src="/1.jpg" alt="Order" className="track-order-img" />
+          <img src="/sf_tshirt.png" alt="Order" className="track-order-img" />
           <div className="track-order-info">
             <h4>Order #SF12345</h4>
             <p>Placed on 20 May 2024</p>
@@ -67,7 +67,7 @@ export default function TrackPage() {
         </div>
 
         <div className="track-order-item">
-          <img src="/3.jpg" alt="Order" className="track-order-img" />
+          <img src="/sf_cargo.png" alt="Order" className="track-order-img" />
           <div className="track-order-info">
             <h4>Order #SF12344</h4>
             <p>Placed on 18 May 2024</p>
@@ -81,7 +81,7 @@ export default function TrackPage() {
         </div>
 
         <div className="track-order-item">
-          <img src="/2.jpg" alt="Order" className="track-order-img" />
+          <img src="/sf_shirt.png" alt="Order" className="track-order-img" />
           <div className="track-order-info">
             <h4>Order #SF12343</h4>
             <p>Placed on 16 May 2024</p>

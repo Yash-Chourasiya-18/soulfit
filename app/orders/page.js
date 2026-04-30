@@ -54,7 +54,7 @@ export default function OrdersPage() {
       <div className="orders-list">
         {/* Order 1 */}
         <div className="orders-card">
-          <img src="/1.jpg" alt="Order" className="orders-card-img" />
+          <img src="/sf_tshirt.png" alt="Order" className="orders-card-img" />
           <div className="orders-card-info">
             <h4>Order #SF12345</h4>
             <p>Placed on 20 May 2024 &bull; 2 Items</p>
@@ -69,7 +69,7 @@ export default function OrdersPage() {
 
         {/* Order 2 */}
         <div className="orders-card">
-          <img src="/3.jpg" alt="Order" className="orders-card-img" />
+          <img src="/sf_cargo.png" alt="Order" className="orders-card-img" />
           <div className="orders-card-info">
             <h4>Order #SF12344</h4>
             <p>Placed on 18 May 2024 &bull; 3 Items</p>
@@ -84,7 +84,7 @@ export default function OrdersPage() {
 
         {/* Order 3 */}
         <div className="orders-card">
-          <img src="/2.jpg" alt="Order" className="orders-card-img" />
+          <img src="/sf_shirt.png" alt="Order" className="orders-card-img" />
           <div className="orders-card-info">
             <h4>Order #SF12343</h4>
             <p>Placed on 16 May 2024 &bull; 1 Item</p>
@@ -99,7 +99,7 @@ export default function OrdersPage() {
 
         {/* Order 4 */}
         <div className="orders-card">
-          <img src="/5.jpg" alt="Order" className="orders-card-img" />
+          <img src="/sf_pant.png" alt="Order" className="orders-card-img" />
           <div className="orders-card-info">
             <h4>Order #SF12342</h4>
             <p>Placed on 10 May 2024 &bull; 2 Items</p>
@@ -114,7 +114,7 @@ export default function OrdersPage() {
 
         {/* Order 5 */}
         <div className="orders-card">
-          <img src="/4.jpg" alt="Order" className="orders-card-img" />
+          <img src="/sf_cat_shirt.png" alt="Order" className="orders-card-img" />
           <div className="orders-card-info">
             <h4>Order #SF12341</h4>
             <p>Placed on 05 May 2024 &bull; 1 Item</p>

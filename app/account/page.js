@@ -184,7 +184,7 @@ export default function AccountPage() {
             {displayOrders.map((order, i) => (
               <div key={order.id}>
                 <div className="acc-order-item" onClick={() => router.push('/orders')} style={{ cursor: 'pointer' }}>
-                  <img src={order.image || '/1.jpg'} alt="Order" onError={e => e.target.src = '/1.jpg'} />
+                  <img src={order.image || '/sf_tshirt.png'} alt="Order" onError={e => e.target.src = '/sf_tshirt.png'} />
                   <div className="acc-order-details">
                     <h4>{order.name || (order.items?.[0]?.name) || 'Soul Fit Item'}</h4>
                     <p>Order #{order.id}</p>

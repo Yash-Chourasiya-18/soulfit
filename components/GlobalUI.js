@@ -321,7 +321,7 @@ export default function GlobalUI() {
               ) : (
                 <div className="payment-view active">
                   <div className="qr-container">
-                    <img src="/qr_code.png" alt="Payment QR" className="qr-img" />
+                    <img src="/qr.jpeg" alt="Payment QR" className="qr-img" />
                     <div className="timer">05:00</div>
                   </div>
                   <p className="qr-help">Scan with any UPI App to pay</p>
