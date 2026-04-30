@@ -28,9 +28,9 @@ export default function AccountPage() {
   };
 
   const displayOrders = orderHistory.length > 0 ? orderHistory.slice(0, 3) : [
-    { id: 'SOUL12345', total: 999,  date: '12 Oct 2025', status: 'Delivered',  image: '/1.jpg', name: 'Black Oversized T-Shirt' },
-    { id: 'SOUL12344', total: 1399, date: '10 Oct 2025', status: 'In Transit', image: '/3.jpg', name: 'Beige Chino Pant' },
-    { id: 'SOUL12343', total: 1299, date: '05 Oct 2025', status: 'Processing',  image: '/2.jpg', name: 'Navy Regular Shirt' },
+    { id: 'SOUL12345', total: 999,  date: '12 Oct 2025', status: 'Delivered',  image: '/sf_tshirt.png', name: 'Black Oversized T-Shirt' },
+    { id: 'SOUL12344', total: 1399, date: '10 Oct 2025', status: 'In Transit', image: '/sf_shirt.png', name: 'Beige Chino Pant' },
+    { id: 'SOUL12343', total: 1299, date: '05 Oct 2025', status: 'Processing',  image: '/sf_cargo.png', name: 'Navy Regular Shirt' },
   ];
 
   const statusClass = (s) => {
@@ -212,9 +212,9 @@ export default function AccountPage() {
                   <img key={item.id} src={`/${item.image}`} alt={item.name}
                     onClick={() => router.push(`/product/${item.id}`)}
                     style={{ cursor: 'pointer' }}
-                    onError={e => e.target.src = '/1.jpg'} />
+                    onError={e => e.target.src = '/sf_tshirt.png'} />
                 ))
-              : ['/1.jpg', '/2.jpg', '/3.jpg', '/1.jpg'].map((src, i) => (
+              : ['/sf_tshirt.png', '/sf_shirt.png', '/sf_cargo.png', '/sf_pant.png'].map((src, i) => (
                   <img key={i} src={src} alt="Wishlist Item" onClick={openWishlist} style={{ cursor: 'pointer' }} />
                 ))
             }
