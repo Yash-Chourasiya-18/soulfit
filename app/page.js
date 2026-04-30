@@ -65,7 +65,7 @@ export default function HomePage() {
             </div>
             <div className="feature-text">
               <div className="feature-title">Easy Returns</div>
-              <div className="feature-sub">10 days return policy</div>
+              <div className="feature-sub">7 days return policy</div>
             </div>
           </div>
         </div>

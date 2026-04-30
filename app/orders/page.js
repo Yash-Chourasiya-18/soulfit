@@ -2,11 +2,34 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useAppContext } from '../../context/AppContext';
 import './orders.css';
 
 export default function OrdersPage() {
+  const { orderHistory } = useAppContext();
   const [activeTab, setActiveTab] = useState('All Orders');
+  const [searchQuery, setSearchQuery] = useState('');
   const tabs = ['All Orders', 'Delivered', 'In Transit', 'Processing', 'Cancelled', 'Returned'];
+
+  // Mock data for initial view/demo
+  const mockOrders = [
+    { id: 'SF12345', date: '20 May 2024', total: 1299, items: 2, status: 'Delivered', msg: 'Delivered on 24 May 2024', image: '/sf_tshirt.png', name: 'Black Oversized T-Shirt' },
+    { id: 'SF12344', date: '18 May 2024', total: 2398, items: 3, status: 'In Transit', msg: 'Expected by 25 May 2024', image: '/sf_cargo.png', name: 'Beige Cargo Pant' },
+    { id: 'SF12343', date: '16 May 2024', total: 1199, items: 1, status: 'Processing', msg: 'We are preparing your order', image: '/sf_shirt.png', name: 'Navy Regular Shirt' },
+    { id: 'SF12342', date: '10 May 2024', total: 798, items: 2, status: 'Cancelled', msg: 'Cancelled on 11 May 2024', image: '/sf_pant.png', name: 'Grey Track Pant' },
+    { id: 'SF12341', date: '05 May 2024', total: 1499, items: 1, status: 'Delivered', msg: 'Delivered on 07 May 2024', image: '/sf_cat_shirt.png', name: 'Printed Summer Shirt' },
+  ];
+
+  // Combine mock orders with real history
+  const allOrders = [...orderHistory, ...mockOrders];
+
+  // Filter logic
+  const filteredOrders = allOrders.filter(order => {
+    const matchesTab = activeTab === 'All Orders' || order.status === activeTab;
+    const matchesSearch = order.id.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          (order.name && order.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchesTab && matchesSearch;
+  });
 
   return (
     <div className="orders-container">
@@ -16,13 +39,6 @@ export default function OrdersPage() {
           <h1 className="orders-title">My Orders</h1>
           <p className="orders-subtitle">Track, view and manage all your orders in one place.</p>
         </div>
-        <button className="orders-settings-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="20" height="20">
-            <circle cx="6" cy="12" r="1.5"></circle>
-            <circle cx="12" cy="12" r="1.5"></circle>
-            <circle cx="18" cy="12" r="1.5"></circle>
-          </svg>
-        </button>
       </div>
 
       {/* TABS */}
@@ -42,90 +58,39 @@ export default function OrdersPage() {
       <div className="orders-actions">
         <div className="orders-search-wrap">
           <svg className="orders-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" className="orders-search-input" placeholder="Search by order ID or item..." />
+          <input 
+            type="text" 
+            className="orders-search-input" 
+            placeholder="Search by order ID or item..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
-        <button className="orders-filter-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-          Filter
-        </button>
       </div>
 
       {/* ORDERS LIST */}
       <div className="orders-list">
-        {/* Order 1 */}
-        <div className="orders-card">
-          <img src="/sf_tshirt.png" alt="Order" className="orders-card-img" />
-          <div className="orders-card-info">
-            <h4>Order #SF12345</h4>
-            <p>Placed on 20 May 2024 &bull; 2 Items</p>
-            <strong>Total: ₹1,299.00</strong>
+        {filteredOrders.length > 0 ? (
+          filteredOrders.map((order) => (
+            <div className="orders-card" key={order.id}>
+              <img src={order.image || '/sf_tshirt.png'} alt="Order" className="orders-card-img" onError={(e) => e.target.src = '/sf_tshirt.png'} />
+              <div className="orders-card-info">
+                <h4>Order #{order.id}</h4>
+                <p>Placed on {order.date} &bull; {order.items?.length || order.items || 1} {order.items === 1 ? 'Item' : 'Items'}</p>
+                <strong>Total: ₹{order.total?.toLocaleString('en-IN')}</strong>
+              </div>
+              <div className="orders-status-block">
+                <div className={`orders-badge status-${order.status.toLowerCase().replace(' ', '-')}`}>{order.status}</div>
+                <div className="orders-status-msg">{order.msg || `${order.status} on ${order.date}`}</div>
+              </div>
+              <svg className="orders-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"></path></svg>
+            </div>
+          ))
+        ) : (
+          <div className="no-orders" style={{ textAlign: 'center', padding: '40px', color: 'var(--gray)' }}>
+            <p>No orders found for "{activeTab}"</p>
           </div>
-          <div className="orders-status-block">
-            <div className="orders-badge status-delivered">Delivered</div>
-            <div className="orders-status-msg">Delivered on 24 May 2024</div>
-          </div>
-          <svg className="orders-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"></path></svg>
-        </div>
-
-        {/* Order 2 */}
-        <div className="orders-card">
-          <img src="/sf_cargo.png" alt="Order" className="orders-card-img" />
-          <div className="orders-card-info">
-            <h4>Order #SF12344</h4>
-            <p>Placed on 18 May 2024 &bull; 3 Items</p>
-            <strong>Total: ₹2,398.00</strong>
-          </div>
-          <div className="orders-status-block">
-            <div className="orders-badge status-transit">In Transit</div>
-            <div className="orders-status-msg">Expected by 25 May 2024</div>
-          </div>
-          <svg className="orders-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"></path></svg>
-        </div>
-
-        {/* Order 3 */}
-        <div className="orders-card">
-          <img src="/sf_shirt.png" alt="Order" className="orders-card-img" />
-          <div className="orders-card-info">
-            <h4>Order #SF12343</h4>
-            <p>Placed on 16 May 2024 &bull; 1 Item</p>
-            <strong>Total: ₹1,199.00</strong>
-          </div>
-          <div className="orders-status-block">
-            <div className="orders-badge status-processing">Processing</div>
-            <div className="orders-status-msg">We are preparing your order</div>
-          </div>
-          <svg className="orders-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"></path></svg>
-        </div>
-
-        {/* Order 4 */}
-        <div className="orders-card">
-          <img src="/sf_pant.png" alt="Order" className="orders-card-img" />
-          <div className="orders-card-info">
-            <h4>Order #SF12342</h4>
-            <p>Placed on 10 May 2024 &bull; 2 Items</p>
-            <strong>Total: ₹798.00</strong>
-          </div>
-          <div className="orders-status-block">
-            <div className="orders-badge status-cancelled">Cancelled</div>
-            <div className="orders-status-msg">Cancelled on 11 May 2024</div>
-          </div>
-          <svg className="orders-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"></path></svg>
-        </div>
-
-        {/* Order 5 */}
-        <div className="orders-card">
-          <img src="/sf_cat_shirt.png" alt="Order" className="orders-card-img" />
-          <div className="orders-card-info">
-            <h4>Order #SF12341</h4>
-            <p>Placed on 05 May 2024 &bull; 1 Item</p>
-            <strong>Total: ₹1,499.00</strong>
-          </div>
-          <div className="orders-status-block">
-            <div className="orders-badge status-delivered">Delivered</div>
-            <div className="orders-status-msg">Delivered on 07 May 2024</div>
-          </div>
-          <svg className="orders-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"></path></svg>
-        </div>
+        )}
       </div>
 
       {/* PAGINATION */}

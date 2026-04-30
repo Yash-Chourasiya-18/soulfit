@@ -14,9 +14,9 @@ export default function ProductCard({ product }) {
         <img src={`/${product.image}`} alt={product.name} className="product-img" />
         
         {product.comingSoon ? (
-          <div className="product-badge badge-sale" style={{ background: '#555' }}>COMING SOON</div>
+          <div className="product-badge" style={{ background: '#555' }}>SOON</div>
         ) : (
-          product.isNewArrival && <div className="product-badge">NEW</div>
+          product.isNewArrival && <div className="product-badge">New</div>
         )}
 
         <button 
@@ -27,28 +27,20 @@ export default function ProductCard({ product }) {
             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
           </svg>
         </button>
-
-        {product.comingSoon ? (
-          <div className="product-quick-add" style={{ background: '#888', cursor: 'not-allowed' }} onClick={(e) => e.stopPropagation()}>
-            COMING SOON
-          </div>
-        ) : (
-          <div className="product-quick-add" onClick={(e) => { e.stopPropagation(); addToCart(product, product.sizes[0]); }}>
-            ADD TO CART
-          </div>
-        )}
       </div>
       
-      <div className="product-info" onClick={() => window.location.href = `/product/${product.id}`}>
-        <p className="product-name">{product.name}</p>
-        <div className="product-price-row">
-          <p className="product-price">₹{product.price}</p>
-          <p className="product-mrp">₹{product.mrp}</p>
-          <span className="product-discount">{product.discount}</span>
+      <div className="product-info-new">
+        <div className="prod-meta" onClick={() => window.location.href = `/product/${product.id}`}>
+          <p className="prod-name-new">{product.name}</p>
+          <p className="prod-price-new">₹{product.price}</p>
         </div>
-        <div className="product-sizes">
-          {product.sizes.map((s, idx) => <span key={idx}>{s}</span>)}
-        </div>
+        {!product.comingSoon && (
+          <button className="prod-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart(product, product.sizes[0]); }} title="Add to cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+              <path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );

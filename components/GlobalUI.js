@@ -21,14 +21,16 @@ export default function GlobalUI() {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [authName, setAuthName] = useState('');
   const [authEmail, setAuthEmail] = useState('');
+  const [authPhone, setAuthPhone] = useState('');
   const [authPassword, setAuthPassword] = useState('');
 
   const handleAuthSubmit = (e) => {
     e.preventDefault();
     const name = isSignUpMode ? authName : authEmail.split('@')[0];
-    login(authEmail, name);
+    login(authEmail, name, authPhone);
     setAuthName('');
     setAuthEmail('');
+    setAuthPhone('');
     setAuthPassword('');
   };
 
@@ -247,6 +249,7 @@ export default function GlobalUI() {
             <form onSubmit={handleAuthSubmit}>
               {isSignUpMode && <input type="text" className="input-field" placeholder="Full Name" required style={{ marginBottom: '16px' }} value={authName} onChange={e=>setAuthName(e.target.value)} />}
               <input type="email" className="input-field" placeholder="Email Address" required style={{ marginBottom: '16px' }} value={authEmail} onChange={e=>setAuthEmail(e.target.value)} />
+              {isSignUpMode && <input type="tel" className="input-field" placeholder="Phone Number" required style={{ marginBottom: '16px' }} value={authPhone} onChange={e=>setAuthPhone(e.target.value)} />}
               <input type="password" className="input-field" placeholder="Password" required style={{ marginBottom: '24px' }} value={authPassword} onChange={e=>setAuthPassword(e.target.value)} />
               <button type="submit" className="hero-btn w-100">{isSignUpMode ? 'SIGN UP' : 'LOGIN'}</button>
             </form>

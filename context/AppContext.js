@@ -10,6 +10,8 @@ export function AppProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
+  const [savedCards, setSavedCards] = useState([]);
+  const [savedAddresses, setSavedAddresses] = useState([]);
 
   // UI state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -33,6 +35,12 @@ export function AppProvider({ children }) {
       
       const orders = JSON.parse(localStorage.getItem("sf_orders"));
       if (orders) setOrderHistory(orders);
+
+      const cards = JSON.parse(localStorage.getItem("sf_cards"));
+      if (cards) setSavedCards(cards);
+
+      const addresses = JSON.parse(localStorage.getItem("sf_addresses"));
+      if (addresses) setSavedAddresses(addresses);
     } catch (e) {
       console.error("Error loading state from localStorage", e);
     }
@@ -54,6 +62,14 @@ export function AppProvider({ children }) {
   useEffect(() => {
     localStorage.setItem("sf_orders", JSON.stringify(orderHistory));
   }, [orderHistory]);
+
+  useEffect(() => {
+    localStorage.setItem("sf_cards", JSON.stringify(savedCards));
+  }, [savedCards]);
+
+  useEffect(() => {
+    localStorage.setItem("sf_addresses", JSON.stringify(savedAddresses));
+  }, [savedAddresses]);
 
   const deliveryFee = 50;
 
@@ -99,9 +115,12 @@ export function AppProvider({ children }) {
   const isInWishlist = (id) => wishlistItems.some(item => item.id === id);
 
   // Auth Actions
-  const login = (email, name) => {
-    setCurrentUser({ name, email, id: Date.now() });
+  const login = (email, name, phone) => {
+    setCurrentUser({ name, email, phone, id: Date.now() });
     setIsAuthModalOpen(false);
+  };
+  const updateProfile = (updatedUser) => {
+    setCurrentUser(prev => ({ ...prev, ...updatedUser }));
   };
   const logout = () => {
     setCurrentUser(null);
@@ -113,6 +132,22 @@ export function AppProvider({ children }) {
     setOrderHistory(prev => [order, ...prev]);
   };
 
+  // Card Actions
+  const addCard = (card) => {
+    setSavedCards(prev => [...prev, { ...card, id: Date.now() }]);
+  };
+  const removeCard = (id) => {
+    setSavedCards(prev => prev.filter(c => c.id !== id));
+  };
+
+  // Address Actions
+  const addAddress = (address) => {
+    setSavedAddresses(prev => [...prev, { ...address, id: Date.now() }]);
+  };
+  const removeAddress = (id) => {
+    setSavedAddresses(prev => prev.filter(a => a.id !== id));
+  };
+
   return (
     <AppContext.Provider value={{
       currentUser, cartItems, wishlistItems, orderHistory, deliveryFee,
@@ -120,8 +155,9 @@ export function AppProvider({ children }) {
       closeAllOverlays, openSidebar, openWishlist, openCart, openChat, openAuth, openCheckout, closeCheckout,
       addToCart, removeFromCart, clearCart,
       toggleWishlist, removeFromWishlist, isInWishlist,
-      login, logout,
-      addOrder,
+      login, logout, updateProfile,
+      addOrder, addCard, removeCard, savedCards,
+      addAddress, removeAddress, savedAddresses,
       setIsSidebarOpen, setIsWishlistSidebarOpen, setIsCartSidebarOpen, setIsChatSidebarOpen, setIsAuthModalOpen
     }}>
       {children}

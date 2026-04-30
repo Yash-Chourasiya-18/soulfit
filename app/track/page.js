@@ -20,13 +20,7 @@ export default function TrackPage() {
           <h1 className="track-title">Track Order</h1>
           <p className="track-subtitle">Enter your Order ID or Tracking Number to get the latest updates on your order.</p>
         </div>
-        <button className="track-settings-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="20" height="20">
-            <circle cx="6" cy="12" r="1.5"></circle>
-            <circle cx="12" cy="12" r="1.5"></circle>
-            <circle cx="18" cy="12" r="1.5"></circle>
-          </svg>
-        </button>
+
       </div>
 
       {/* INPUT CARD */}
@@ -34,10 +28,10 @@ export default function TrackPage() {
         <label>Order ID / Tracking Number</label>
         <div className="track-search-wrap">
           <svg className="track-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input 
-            type="text" 
-            className="track-search-input" 
-            placeholder="Enter Order ID or Tracking Number" 
+          <input
+            type="text"
+            className="track-search-input"
+            placeholder="Enter Order ID or Tracking Number"
             value={orderId}
             onChange={(e) => setOrderId(e.target.value)}
           />
@@ -49,7 +43,7 @@ export default function TrackPage() {
       {/* RECENT ORDERS */}
       <div className="track-section-header">
         <h3 className="track-section-title">Recent Orders</h3>
-        <Link href="/account" className="track-view-all">View All Orders &gt;</Link>
+        <Link href="/orders" className="track-view-all">View All Orders &gt;</Link>
       </div>
       <div className="track-orders-list">
         <div className="track-order-item">

@@ -142,7 +142,7 @@ function navigate(page, param = null) {
     case 'faq':
       root.innerHTML = getStaticHTML('Frequently Asked Questions', `
         <h4>Do you offer free shipping?</h4><p style="color: gray; margin-bottom: 16px;">No, we charge a flat nominal fee of ₹50 on all orders to ensure premium delivery.</p>
-        <h4>What is the return policy?</h4><p style="color: gray;">We have a 10-day easy return policy for all unworn items with tags attached.</p>
+        <h4>What is the return policy?</h4><p style="color: gray;">We have a 7-day easy return policy for all unworn items with tags attached.</p>
       `);
       break;
     case 'privacy':
@@ -246,7 +246,7 @@ function getHomeHTML() {
           </div>
           <div class="feature-text">
             <div class="feature-title">Easy Returns</div>
-            <div class="feature-sub">10 days return policy</div>
+            <div class="feature-sub">7 days return policy</div>
           </div>
         </div>
       </div>
@@ -776,7 +776,7 @@ function sendChatMessage() {
     let text = msgText.toLowerCase();
     let response = "That's interesting! I am currently a simulated AI assistant. I can help with returns, shipping, or discounts. Ask away!";
     if (text.includes('hi') || text.includes('hello')) response = "Hello there! How can I help you today?";
-    if (text.includes('return')) response = "We have a 10-day hassle-free return policy.";
+    if (text.includes('return')) response = "We have a 7-day hassle-free return policy.";
     if (text.includes('shipping')) response = "Fast delivery in 2-4 days for ₹50.";
     if (text.includes('discount')) response = "Use code SOUL10 for 10% off!";
     

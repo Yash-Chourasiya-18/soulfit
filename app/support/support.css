@@ -182,6 +182,27 @@
 .supp-faq-item:last-child {
   border-bottom: none;
 }
+.supp-faq-item-wrap.active .supp-faq-item {
+  background: #fcfcfc;
+  border-bottom: none;
+}
+
+.supp-faq-answer {
+  padding: 0 24px 24px;
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.6;
+  border-bottom: 1px solid var(--light-gray);
+  animation: slideDown 0.3s ease-out;
+}
+.supp-faq-item-wrap:last-child .supp-faq-answer {
+  border-bottom: none;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .supp-faq-item span {
   font-size: 15px;

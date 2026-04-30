@@ -15,7 +15,7 @@ const KB = {
   returns:  "↩️ 7-day hassle-free returns. Items must be unused, original packaging. Refunds processed in 5–7 business days after receiving the item.",
   payment:  "💳 We accept: Credit/Debit Cards, UPI (GPay, PhonePe, Paytm), Net Banking & QR Code — all via secure Razorpay gateway.",
   sizes:    "📐 T-Shirts & Shirts: S / M / L / XL. Track Pants & Cargos: waist 30 / 32 / 34 / 36. Tip: If between sizes, go one UP for comfort.",
-  contact:  "📞 Email: support@soulfit.com | Phone: +91 12345 67890 | Mon–Sat, 10AM–7PM. Live chat also available on the Support page.",
+  contact:  "📞 Email: support@soulfit.com | Phone: +91 81037 58319 | Instagram: @soulfit.in_ | Mon–Sat, 10AM–7PM.",
   quality:  "👌 100% cotton, moisture-wicking polyester blends, wrinkle-resistant fabrics. Every piece is quality-checked before dispatch. Wash care: cold machine wash, inside out.",
   offers:   `🏷️ Current discounts: ${PRODUCTS.map(p=>`${p.name} – ${p.disc}% off`).join(' | ')}. Best deal: Olive Green Track Pant at 32% off!`,
 };
@@ -82,7 +82,7 @@ export function getSmartResponse(input, ctx) {
 
   // Sentiment first
   if (sentiment === 'negative') {
-    return { text:"I'm really sorry you're feeling that way 😔 We always aim to give the best experience. Please reach out at **support@soulfit.com** or call **+91 12345 67890** and we'll make it right immediately!", quickReplies:["Contact support","Return policy","Track order"] };
+    return { text:"I'm really sorry you're feeling that way 😔 We always aim to give the best experience. Please reach out at **support@soulfit.com** or call **+91 81037 58319** and we'll make it right immediately!", quickReplies:["Contact support","Return policy","Track order"] };
   }
   if (sentiment === 'positive') {
     return { text:"Thank you so much! 🙏 We love happy customers. Anything else I can help you with?", quickReplies:["Show offers","New arrivals","Best sellers"] };

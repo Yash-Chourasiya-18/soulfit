@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from 'react';
 import Link from 'next/link';
@@ -32,7 +32,8 @@ export default function Footer() {
           <div className="footer-v2-col">
             <h4><span className="gold-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line></svg></span> HELP</h4>
             <Link href="/track">Track Order</Link>
-            <Link href="/faq">Returns</Link>
+            <Link href="/shipping">Shipping Policy</Link>
+            <Link href="/returns">Returns & Refunds</Link>
             <Link href="/faq">FAQ</Link>
             <a href="javascript:void(0)" onClick={openChat}>Support</a>
           </div>
@@ -47,7 +48,7 @@ export default function Footer() {
             <h4><span className="gold-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span> LEGAL</h4>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms &amp; Conditions</Link>
-            <Link href="/privacy">Cookie Policy</Link>
+            <Link href="/returns">Refund Policy</Link>
           </div>
         </div>
 
@@ -92,7 +93,7 @@ export default function Footer() {
               <span className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></span>
               <div>
                 <h5>EASY RETURNS</h5>
-                <p>14 days return policy</p>
+                <p>7 days return policy</p>
               </div>
             </div>
             <div className="feat-item">

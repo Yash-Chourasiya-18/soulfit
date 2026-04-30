@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useAppContext } from '../context/AppContext';
 import { getSmartResponse } from './chatEngine';
 import './AIChatBot.css';
 
@@ -37,7 +38,7 @@ function renderText(text) {
 const INITIAL_MSG = { id:1, isBot:true, text:"Hey! 👋 I'm the **Soul Fit AI** — your personal shopping assistant. I know everything about our products, prices, offers & policies. How can I help?", quickReplies:["Show all products","Best sellers","New arrivals","Current offers","Shipping info"] };
 
 export default function AIChatBot() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isChatSidebarOpen, setIsChatSidebarOpen, closeAllOverlays } = useAppContext();
   const [messages, setMessages] = useState([INITIAL_MSG]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -51,11 +52,11 @@ export default function AIChatBot() {
   }, [messages, isTyping]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isChatSidebarOpen) {
       setUnread(0);
       setTimeout(() => inputRef.current?.focus(), 300);
     }
-  }, [isOpen]);
+  }, [isChatSidebarOpen]);
 
   const send = (text) => {
     const trimmed = text.trim();
@@ -73,13 +74,13 @@ export default function AIChatBot() {
       const botMsg = { id: Date.now()+1, isBot: true, ...response };
       setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
-      if (!isOpen) setUnread(u => u + 1);
+      if (!isChatSidebarOpen) setUnread(u => u + 1);
     }, delay);
   };
 
   return (
     <div className="ai-chat-wrapper">
-      {isOpen && (
+      {isChatSidebarOpen && (
         <div className="ai-chat-window">
           {/* Header */}
           <div className="ai-chat-header">
@@ -99,7 +100,7 @@ export default function AIChatBot() {
               <button className="ai-chat-close" onClick={() => { setMessages([INITIAL_MSG]); setHasInteracted(false); }} title="Reset chat">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
               </button>
-              <button className="ai-chat-close" onClick={() => setIsOpen(false)}>
+              <button className="ai-chat-close" onClick={() => setIsChatSidebarOpen(false)}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </button>
             </div>
@@ -166,12 +167,12 @@ export default function AIChatBot() {
       )}
 
       {/* FAB */}
-      <button className="ai-chat-btn" onClick={() => setIsOpen(o => !o)}>
-        {isOpen
+      <button className="ai-chat-btn" onClick={() => isChatSidebarOpen ? setIsChatSidebarOpen(false) : setIsChatSidebarOpen(true)}>
+        {isChatSidebarOpen
           ? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="28" height="28"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         }
-        {unread > 0 && !isOpen && <span className="ai-unread-badge">{unread}</span>}
+        {unread > 0 && !isChatSidebarOpen && <span className="ai-unread-badge">{unread}</span>}
       </button>
     </div>
   );

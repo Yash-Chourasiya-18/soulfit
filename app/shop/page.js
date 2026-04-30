@@ -4,6 +4,16 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '../../components/ProductCard';
 import { products } from '../../lib/products';
+import './shop.css';
+
+const CATEGORIES = [
+  { id: 'T-shirt', name: 'T-Shirts', img: 'sf_tshirt.png' },
+  { id: 'Shirt', name: 'Shirts', img: 'sf_shirt.png' },
+  { id: 'Pant', name: 'Pants', img: 'sf_track.png' },
+  { id: 'Trouser', name: 'Trousers', img: 'sf_cargo.png' },
+  { id: 'Hoodie', name: 'Hoodies', img: 'sf_hoodie.png' },
+  { id: 'Shoes', name: 'Shoes', img: 'sf_shoe.png' },
+];
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -25,7 +35,7 @@ function ShopContent() {
   if (currentFilter === 'new_arrivals') {
     filtered = filtered.filter(p => p.isNewArrival);
   } else if (currentFilter === 'best_sellers') {
-    filtered = filtered.sort((a, b) => b.salesCount - a.salesCount).slice(0, 4);
+    filtered = filtered.sort((a, b) => b.salesCount - a.salesCount).slice(0, 8);
   } else if (currentFilter !== 'all') {
     filtered = filtered.filter(p => p.category === currentFilter || p.subcategory === currentFilter);
   }
@@ -46,51 +56,61 @@ function ShopContent() {
   }
 
   return (
-    <div className="container" style={{ paddingTop: '30px', minHeight: '60vh' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
-        <h2 className="section-title" style={{ margin: 0 }}>Shop Collection</h2>
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <input 
-            type="text" 
-            placeholder="Search..." 
-            className="input-field" 
-            style={{ width: '200px', padding: '8px 12px' }} 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <select 
-            className="input-field" 
-            style={{ width: 'auto', padding: '8px 12px' }}
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            <option value="default">Sort By</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-          </select>
+    <div className="shop-page">
+      <div className="container">
+        <h1 className="shop-main-title">Shop</h1>
+
+        {/* TOP BAR: Search & Filters */}
+        <div className="shop-top-bar">
+          <div className="shop-search-box">
+            <svg className="shop-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input 
+              type="text" 
+              placeholder="Search for products, categories..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <div className="shop-actions">
+            <button className="shop-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+              Filter
+            </button>
+            <select className="shop-sort-select" value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+              <option value="default">Sort by</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div className="filter-strip">
-        <button className={`filter-btn ${currentFilter === 'all' ? 'active' : ''}`} onClick={() => setCurrentFilter('all')}>All</button>
-        <span className="filter-sep">|</span>
-        <button className={`filter-btn ${currentFilter === 'T-shirt' ? 'active' : ''}`} onClick={() => setCurrentFilter('T-shirt')}>T-Shirts</button>
-        <button className={`filter-btn ${currentFilter === 'Polo T-Shirts' ? 'active' : ''}`} onClick={() => setCurrentFilter('Polo T-Shirts')}>Polo</button>
-        <button className={`filter-btn ${currentFilter === 'Normal Cotton T-Shirts' ? 'active' : ''}`} onClick={() => setCurrentFilter('Normal Cotton T-Shirts')}>Cotton Tee</button>
-        <span className="filter-sep">|</span>
-        <button className={`filter-btn ${currentFilter === 'Shirt' ? 'active' : ''}`} onClick={() => setCurrentFilter('Shirt')}>Shirts</button>
-        <button className={`filter-btn ${currentFilter === 'Printed Shirts' ? 'active' : ''}`} onClick={() => setCurrentFilter('Printed Shirts')}>Printed</button>
-        <button className={`filter-btn ${currentFilter === 'Formal Shirts' ? 'active' : ''}`} onClick={() => setCurrentFilter('Formal Shirts')}>Formal</button>
-        <span className="filter-sep">|</span>
-        <button className={`filter-btn ${currentFilter === 'Pant' ? 'active' : ''}`} onClick={() => setCurrentFilter('Pant')}>Track Pants</button>
-        <span className="filter-sep">|</span>
-        <button className={`filter-btn ${currentFilter === 'Cargo' ? 'active' : ''}`} onClick={() => setCurrentFilter('Cargo')}>Cargo <span className="cs-badge">Soon</span></button>
-      </div>
+        {/* CATEGORIES CIRCLE LIST */}
+        <div className="shop-section-header">
+          <h3 className="shop-section-title">Categories</h3>
+          <span className="shop-view-all" onClick={() => setCurrentFilter('all')}>View All &gt;</span>
+        </div>
+        <div className="shop-cat-list">
+          {CATEGORIES.map(cat => (
+            <div key={cat.id} className={`shop-cat-item ${currentFilter === cat.id ? 'active' : ''}`} onClick={() => setCurrentFilter(cat.id)}>
+              <div className="shop-cat-circle">
+                <img src={`/${cat.img}`} alt={cat.name} />
+              </div>
+              <span className="shop-cat-name">{cat.name}</span>
+            </div>
+          ))}
+        </div>
 
-      <div className="products-grid">
-        {filtered.length === 0 ? <p>No products found.</p> : 
-          filtered.map(p => <ProductCard key={p.id} product={p} />)
-        }
+        {/* PRODUCTS GRID */}
+        <div className="shop-section-header" style={{ marginTop: '40px' }}>
+          <h3 className="shop-section-title">All Products</h3>
+          <span className="shop-prod-count">{filtered.length} Products</span>
+        </div>
+
+        <div className="shop-products-grid">
+          {filtered.length === 0 ? <p className="no-results">No products found matching your criteria.</p> : 
+            filtered.map(p => <ProductCard key={p.id} product={p} />)
+          }
+        </div>
       </div>
     </div>
   );
@@ -98,7 +118,7 @@ function ShopContent() {
 
 export default function ShopPage() {
   return (
-    <Suspense fallback={<div className="container" style={{ paddingTop: '30px' }}><p>Loading Shop...</p></div>}>
+    <Suspense fallback={<div className="container" style={{ paddingTop: '80px' }}><p>Loading Shop...</p></div>}>
       <ShopContent />
     </Suspense>
   );
