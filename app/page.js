@@ -1,121 +1,105 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
-import HeroSlider from '../components/HeroSlider';
 import ProductCard from '../components/ProductCard';
 import { products } from '../lib/products';
 
 export default function HomePage() {
   const newArrivals = products.filter(p => p.isNewArrival).slice(0, 4);
+  const bestSellers = products.filter(p => p.isBestseller).slice(0, 8);
 
   return (
-    <>
-      <HeroSlider />
-
-      {/* CATEGORIES */}
-      <section className="section">
-        <div className="container">
-          <h2 className="section-title">Category of Clothes</h2>
-          <div className="categories-grid">
-            <Link href="/shop?category=T-shirt" className="category-card">
-              <div className="category-img-wrap"><img src="/soulfit_category_tshirt_1777394453783.png" className="category-img" alt="T-Shirt" /></div>
-              <p className="category-name">T-Shirt</p>
-            </Link>
-            <Link href="/shop?category=Shirt" className="category-card">
-              <div className="category-img-wrap"><img src="/soulfit_category_shirt_1777394467745.png" className="category-img" alt="Shirt" /></div>
-              <p className="category-name">Shirt</p>
-            </Link>
-            <Link href="/shop?category=Pant" className="category-card">
-              <div className="category-img-wrap"><img src="/sf_pant.png" className="category-img" alt="Pant" /></div>
-              <p className="category-name">Pant</p>
-            </Link>
-            <Link href="/shop?category=Cargo" className="category-card">
-              <div className="category-img-wrap"><img src="/soulfit_category_cargo_1777394485440.png" className="category-img" alt="Cargo" /></div>
-              <p className="category-name">Cargo</p>
-            </Link>
-          </div>
+    <main style={{ background: '#fff' }}>
+      {/* ═══ HERO SECTION ═══ */}
+      <section style={{ position: 'relative', width: '100%', height: '85vh', minHeight: '600px', overflow: 'hidden' }}>
+        <img 
+          src="/soulfit_category_shirt_1777394467745.png" 
+          alt="Hero" 
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)' }} />
+        <div style={{ position: 'absolute', bottom: '10%', left: '0', right: '0', textAlign: 'center', color: '#fff', padding: '0 24px' }}>
+          <h1 style={{ fontSize: 'clamp(40px, 8vw, 90px)', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '-0.02em', marginBottom: '16px' }}>
+            Elevated Essentials
+          </h1>
+          <p style={{ fontSize: 'clamp(14px, 2vw, 18px)', fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '40px', opacity: 0.9 }}>
+            The New Season Collection is Here
+          </p>
+          <Link href="/shop" style={{ display: 'inline-block', background: '#fff', color: '#111', padding: '18px 48px', borderRadius: '4px', fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', textDecoration: 'none', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
+            Shop Now
+          </Link>
         </div>
       </section>
 
-      {/* FEATURES STRIP */}
-      <div className="container" style={{ marginBottom: '40px' }}>
-        <div className="features-strip">
-          <div className="feature-card feature-card-highlight">
-            <div className="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="24" height="24"><path d="M5 12l5 5L20 7" /></svg>
-            </div>
-            <div className="feature-text">
-              <div className="feature-title">100% Original</div>
-              <div className="feature-sub">Guaranteed authentic</div>
-            </div>
-          </div>
-          <div className="feature-divider"></div>
-          <div className="feature-card">
-            <div className="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="24" height="24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
-            </div>
-            <div className="feature-text">
-              <div className="feature-title">Fast Delivery</div>
-              <div className="feature-sub">Within 2-4 days</div>
-            </div>
-          </div>
-          <div className="feature-divider"></div>
-          <div className="feature-card">
-            <div className="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="24" height="24"><path d="M3 3h18v18H3z" /><path d="M9 9h6v6H9z" /></svg>
-            </div>
-            <div className="feature-text">
-              <div className="feature-title">Easy Returns</div>
-              <div className="feature-sub">7 days return policy</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* NEW ARRIVALS */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">New Arrivals</h2>
-            <Link href="/shop?filter=new_arrivals" className="view-all">View All <span style={{ fontSize: '18px' }}>›</span></Link>
-          </div>
-          <div className="products-grid">
-            {newArrivals.map(p => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
+      {/* ═══ CATEGORIES (Minimal Grid) ═══ */}
+      <section className="container section-gap">
+        <h2 style={{ fontSize: '24px', marginBottom: '40px', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '2px' }}>Explore Categories</h2>
+        <div className="categories-grid">
+          {[
+            { name: 'Shirts', img: '/soulfit_category_shirt_1777394467745.png', slug: 'Shirt' },
+            { name: 'T-Shirts', img: '/soulfit_category_tshirt_1777394453783.png', slug: 'T-shirt' },
+            { name: 'Pants', img: '/sf_pant.png', slug: 'Pant' },
+            { name: 'Cargos', img: '/soulfit_category_cargo_1777394485440.png', slug: 'Cargo' }
+          ].map(cat => (
+            <Link key={cat.name} href={`/shop?category=${cat.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <div className="category-card" style={{ boxShadow: 'none' }}>
+                <div className="category-img-wrap" style={{ borderRadius: '12px' }}>
+                  <img src={cat.img} className="category-img" alt={cat.name} />
+                </div>
+                <p style={{ marginTop: '16px', fontWeight: 700, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '1px', textAlign: 'center' }}>
+                  {cat.name}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* ASSURANCES */}
-      <section className="assurances-section">
-        <div className="container">
-          <div className="assurances-wrap">
-            <div className="assurance-item">
-              <div className="assurance-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" width="24" height="24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
-              </div>
-              <h4 className="assurance-title">Premium Quality</h4>
-              <p className="assurance-desc">Every piece is crafted with extreme attention to detail and finest fabrics.</p>
-            </div>
-            <div className="assurance-divider"></div>
-            <div className="assurance-item">
-              <div className="assurance-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" width="24" height="24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0110 0v4" /></svg>
-              </div>
-              <h4 className="assurance-title">Secure Payments</h4>
-              <p className="assurance-desc">100% secure payment gateways to ensure your details are always safe.</p>
-            </div>
-            <div className="assurance-divider"></div>
-            <div className="assurance-item">
-              <div className="assurance-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" width="24" height="24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line></svg>
-              </div>
-              <h4 className="assurance-title">24x7 Available</h4>
-              <p className="assurance-desc">Our dedicated support team is available around the clock to assist you.</p>
-            </div>
-          </div>
+      {/* ═══ NEW ARRIVALS ═══ */}
+      <section className="container section-gap">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+          <h2 style={{ fontSize: '24px', textTransform: 'uppercase', letterSpacing: '1px' }}>New Arrivals</h2>
+          <Link href="/shop" style={{ fontSize: '12px', fontWeight: 700, color: '#666', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '1px' }}>View All</Link>
+        </div>
+        <div className="products-grid">
+          {newArrivals.map(p => (
+            <ProductCard key={p.id} product={p} />
+          ))}
         </div>
       </section>
-    </>
+
+      {/* ═══ PROMO STRIP (H&M style) ═══ */}
+      <section style={{ background: '#000', color: '#fff', padding: '100px 0', margin: '100px 0', textAlign: 'center' }}>
+        <div className="container">
+          <h2 style={{ fontSize: ' clamp(32px, 5vw, 60px)', marginBottom: '24px', fontWeight: 900 }}>Soul Fit Inner Circle</h2>
+          <p style={{ fontSize: '16px', marginBottom: '40px', opacity: 0.8, maxWidth: '600px', margin: '0 auto 40px' }}>Join our membership for exclusive early access, special pricing, and personalized styling.</p>
+          <button style={{ background: '#fff', color: '#111', border: 'none', padding: '16px 40px', borderRadius: '4px', fontWeight: 800, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', cursor: 'pointer' }}>
+            Join the Movement
+          </button>
+        </div>
+      </section>
+
+      {/* ═══ BEST SELLERS ═══ */}
+      <section className="container section-gap">
+        <h2 style={{ fontSize: '24px', marginBottom: '40px', textTransform: 'uppercase', letterSpacing: '1px', textAlign: 'center' }}>Trending Now</h2>
+        <div className="products-grid">
+          {bestSellers.map(p => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
+
+      <style jsx>{`
+        .categories-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        @media (min-width: 768px) {
+          .categories-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+      `}</style>
+    </main>
   );
 }
