@@ -2,15 +2,21 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useAppContext } from '../context/AppContext';
 
 export default function ProductCard({ product }) {
   const { toggleWishlist, isInWishlist, addToCart } = useAppContext();
   const inWishlist = isInWishlist(product.id);
+  const router = useRouter();
+
+  const handleNavigate = () => {
+    router.push(`/product/${product.id}`);
+  };
 
   return (
     <div className="product-card">
-      <div className="product-img-wrap" onClick={() => window.location.href = `/product/${product.id}`}>
+      <div className="product-img-wrap" onClick={handleNavigate}>
         <img src={`/${product.image}`} alt={product.name} className="product-img" />
         
         {product.comingSoon ? (
@@ -30,12 +36,16 @@ export default function ProductCard({ product }) {
       </div>
       
       <div className="product-info-new">
-        <div className="prod-meta" onClick={() => window.location.href = `/product/${product.id}`}>
+        <div className="prod-meta" onClick={handleNavigate}>
           <p className="prod-name-new">{product.name}</p>
           <p className="prod-price-new">₹{product.price}</p>
         </div>
         {!product.comingSoon && (
-          <button className="prod-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart(product, product.sizes[0]); }} title="Add to cart">
+          <button 
+            className="prod-cart-btn" 
+            onClick={(e) => { e.stopPropagation(); addToCart(product, product.sizes[0], 1); }} 
+            title="Quick add to cart"
+          >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
               <path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
