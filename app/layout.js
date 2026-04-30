@@ -2,6 +2,7 @@ import { AppProvider } from '../context/AppContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import GlobalUI from '../components/GlobalUI';
+import AIChatBot from '../components/AIChatBot';
 import './globals.css';
 
 export const metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <Footer />
+          <AIChatBot />
         </AppProvider>
       </body>
     </html>

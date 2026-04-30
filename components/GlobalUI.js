@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAppContext } from '../context/AppContext';
 
 export default function GlobalUI() {
@@ -12,6 +13,9 @@ export default function GlobalUI() {
     removeFromCart, removeFromWishlist, toggleWishlist,
     login, logout, addOrder, clearCart
   } = useAppContext();
+
+  const pathname = usePathname();
+  const router = useRouter();
 
   // Auth state
   const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -88,39 +92,46 @@ export default function GlobalUI() {
 
       {/* MAIN SIDEBAR */}
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-        <button className="sidebar-close" onClick={closeAllOverlays}>&#10005;</button>
+        <button className="sidebar-close" onClick={closeAllOverlays}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{width: '24px', height: '24px'}}><path d="M18 6L6 18M6 6l12 12" /></svg>
+        </button>
         <div className="sidebar-user">
           <div className="sidebar-avatar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
             </svg>
           </div>
           <div>
             <div className="sidebar-hello">Hello, {currentUser ? currentUser.name : 'Guest'}</div>
             {!currentUser && (
-              <div className="sidebar-login" onClick={openAuth} style={{ cursor: 'pointer', textDecoration: 'underline' }}>Login / Sign up</div>
+              <div className="sidebar-login" onClick={openAuth} style={{ cursor: 'pointer' }}>Login / Sign up</div>
             )}
           </div>
         </div>
         <nav className="sidebar-nav">
-          <Link href="/" className="sidebar-link" onClick={closeAllOverlays}>
-            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 12L12 3l9 9" /><path d="M9 21V12h6v9" /></svg></span>Home
+          <Link href="/" className={`sidebar-link ${pathname === '/' ? 'active' : ''}`} onClick={closeAllOverlays}>
+            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg></span>Home
           </Link>
-          <Link href="/shop" className="sidebar-link arrow" onClick={closeAllOverlays}>
-            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 01-8 0" /></svg></span>Shop
+          <Link href="/shop" className={`sidebar-link ${pathname?.startsWith('/shop') ? 'active' : ''}`} onClick={closeAllOverlays}>
+            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" /></svg></span>Shop
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
-          <Link href="/shop?category=all" className="sidebar-link arrow" onClick={closeAllOverlays}>
+          <Link href="/shop?category=all" className="sidebar-link" onClick={closeAllOverlays}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg></span>Categories
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
-          <Link href="/shop?filter=new_arrivals" className="sidebar-link arrow" onClick={closeAllOverlays}>
-            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg></span>New Arrivals
+          <Link href="/shop?filter=new_arrivals" className="sidebar-link" onClick={closeAllOverlays}>
+            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" /></svg></span>New Arrivals
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
-          <Link href="/shop?filter=best_sellers" className="sidebar-link arrow" onClick={closeAllOverlays}>
+          <Link href="/shop?filter=best_sellers" className="sidebar-link" onClick={closeAllOverlays}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg></span>Best Sellers
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
-          <Link href="/offers" className="sidebar-link arrow" onClick={closeAllOverlays}>
+          <Link href="/offers" className="sidebar-link" onClick={closeAllOverlays}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></span>Offers
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
 
           <div className="sidebar-divider"></div>
@@ -128,39 +139,49 @@ export default function GlobalUI() {
           <a href="#" className="sidebar-link" onClick={(e) => { e.preventDefault(); closeAllOverlays(); openWishlist(); }}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg></span>Wishlist
           </a>
-          <Link href="/account" className="sidebar-link arrow" onClick={closeAllOverlays}>
-            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 8v13H3V8" /><path d="M1 3h22v5H1z" /><path d="M10 12h4" /></svg></span>Orders
+          <Link href="/orders" className={`sidebar-link ${pathname === '/orders' ? 'active' : ''}`} onClick={closeAllOverlays}>
+            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg></span>Orders
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
-          <Link href="/account" className="sidebar-link arrow" onClick={closeAllOverlays}>
-             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /></svg></span>Account
+          <Link href="/account" className={`sidebar-link ${pathname === '/account' ? 'active' : ''}`} onClick={closeAllOverlays}>
+             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></span>Account
+             <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
-          <a href="#" className="sidebar-link arrow" onClick={(e) => { e.preventDefault(); closeAllOverlays(); openChat(); }}>
+          <Link href="/support" className={`sidebar-link ${pathname === '/support' ? 'active' : ''}`} onClick={closeAllOverlays}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" /></svg></span>Support
-          </a>
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="16" height="16"><path d="M9 18l6-6-6-6" /></svg>
+          </Link>
 
           <div className="sidebar-divider"></div>
 
           <Link href="/about" className="sidebar-link" onClick={closeAllOverlays}>
-            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg></span>About Us
+            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg></span>About Us
           </Link>
-          <Link href="/track" className="sidebar-link" onClick={closeAllOverlays}>
+          <Link href="/track" className={`sidebar-link ${pathname === '/track' ? 'active' : ''}`} onClick={closeAllOverlays}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg></span>Track Order
           </Link>
           <Link href="/faq" className="sidebar-link" onClick={closeAllOverlays}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg></span>FAQ
           </Link>
           <Link href="/privacy" className="sidebar-link" onClick={closeAllOverlays}>
-            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg></span>Privacy Policy
+            <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="12 8 12 16"></polyline><polyline points="9 13 12 16 15 13"></polyline></svg></span>Privacy Policy
           </Link>
           <Link href="/terms" className="sidebar-link" onClick={closeAllOverlays}>
             <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg></span>Terms &amp; Conditions
           </Link>
 
-          {currentUser && (
+          {currentUser ? (
             <>
               <div className="sidebar-divider"></div>
               <a href="#" className="sidebar-link sidebar-logout" onClick={(e) => { e.preventDefault(); logout(); closeAllOverlays(); }}>
-                <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg></span>Logout
+                <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg></span>Logout
+              </a>
+            </>
+          ) : (
+            <>
+              <div className="sidebar-divider"></div>
+              <a href="#" className="sidebar-link sidebar-logout" onClick={(e) => { e.preventDefault(); closeAllOverlays(); openAuth(); }}>
+                <span className="sidebar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg></span>Logout
               </a>
             </>
           )}
@@ -213,7 +234,7 @@ export default function GlobalUI() {
           <div className="cart-row"><span>Subtotal:</span> <span>₹{cartSubtotal}</span></div>
           <div className="cart-row"><span>Delivery:</span> <span>₹{deliveryFee}</span></div>
           <div className="cart-row total"><span>Total:</span> <span>₹{cartSubtotal + deliveryFee}</span></div>
-          <button className="hero-btn checkout-btn" onClick={() => { closeAllOverlays(); if(!currentUser) openAuth(); else openCheckout(); }}>PROCEED TO CHECKOUT</button>
+          <button className="hero-btn checkout-btn" onClick={() => { closeAllOverlays(); if(!currentUser) { openAuth(); } else { router.push('/checkout'); } }}>PROCEED TO CHECKOUT</button>
         </div>
       </aside>
 

@@ -56,36 +56,39 @@ body { font-family: var(--font); background: var(--cream); color: var(--black); 
 .sidebar-user {
   display: flex; align-items: center; gap: 14px;
   padding: 60px 22px 22px;
-  border-bottom: 1px solid var(--light-gray);
+  padding: 56px 20px 24px;
+  border-bottom: 1px solid transparent;
   margin-bottom: 8px;
 }
 .sidebar-avatar {
-  width: 48px; height: 48px; border-radius: 50%;
-  border: 1.5px solid var(--light-gray);
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--light-gray);
+  background: var(--cream);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.sidebar-avatar svg { width: 24px; height: 24px; color: var(--gray); }
-.sidebar-hello { font-weight: 600; font-size: 15px; }
-.sidebar-login { font-size: 12.5px; color: var(--gray); margin-top: 2px; }
+.sidebar-avatar svg { width: 22px; height: 22px; color: var(--gray); }
+.sidebar-hello { font-weight: 700; font-size: 16px; letter-spacing: 0.3px; color: var(--black); }
+.sidebar-login { font-size: 13px; color: #888; margin-top: 2px; text-decoration: none !important; }
 
 .sidebar-nav { padding: 4px 0 32px; }
 
 .sidebar-link {
-  display: flex; align-items: center; gap: 14px;
-  padding: 13px 22px; text-decoration: none; color: var(--black);
-  font-size: 14.5px; font-weight: 400; transition: background 0.15s;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 14px; margin: 2px 12px;
+  border-radius: 8px; text-decoration: none; color: var(--black);
+  font-size: 14px; font-weight: 500; transition: background 0.15s;
   position: relative;
 }
-.sidebar-link:hover, .sidebar-link.active { background: #f4f1ec; }
+.sidebar-link:hover, .sidebar-link.active { background: #f5f5f5; }
 .sidebar-link.active { font-weight: 600; }
 
 .sidebar-icon { width: 22px; height: 22px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .sidebar-icon svg { width: 20px; height: 20px; }
 
-.arrow-icon { margin-left: auto; font-size: 18px; color: var(--gray); }
-.sidebar-divider { height: 1px; background: var(--light-gray); margin: 8px 22px; }
-.sidebar-logout { color: #e53935; }
+.arrow-icon { margin-left: auto; color: var(--gray); }
+.sidebar-divider { height: 1px; background: #eaeaea; margin: 12px 24px; }
+.sidebar-logout { color: #e53935; font-weight: 600; }
 .sidebar-logout .sidebar-icon svg { color: #e53935; }
 
 /* ===== HEADER ===== */

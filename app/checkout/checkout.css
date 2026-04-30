@@ -1,0 +1,290 @@
+.checkout-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding-bottom: 60px;
+}
+
+/* ── Top Nav ── */
+.ck-topnav {
+  background: var(--white);
+  border-bottom: 1px solid var(--light-gray);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ck-back-btn {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; color: var(--black);
+  background: none; border: none; cursor: pointer;
+}
+.ck-brand { text-align: center; }
+.ck-brand h2 { font-size: 20px; font-weight: 900; letter-spacing: 3px; }
+.ck-brand p  { font-size: 9px; letter-spacing: 2px; color: var(--gray); }
+.ck-nav-icons { display: flex; gap: 16px; }
+.ck-nav-icon  { background: none; border: none; cursor: pointer; color: var(--black); }
+
+/* ── Stepper ── */
+.ck-stepper {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; padding: 28px 40px;
+  background: var(--white);
+  border-bottom: 1px solid var(--light-gray);
+}
+.ck-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; position: relative;
+}
+.ck-step-circle {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  border: 2px solid #ddd; background: var(--white); color: #999;
+}
+.ck-step.done .ck-step-circle  { background: #c9a84c; border-color: #c9a84c; color: white; }
+.ck-step.active .ck-step-circle { background: var(--white); border-color: #c9a84c; color: #c9a84c; }
+.ck-step-label { font-size: 12px; color: #999; font-weight: 600; }
+.ck-step.done .ck-step-label   { color: #c9a84c; }
+.ck-step.active .ck-step-label { color: #c9a84c; font-weight: 700; }
+.ck-step-line {
+  width: 80px; height: 2px; background: #ddd; margin: 0; margin-bottom: 22px;
+}
+.ck-step-line.done { background: #c9a84c; }
+
+/* ── Layout ── */
+.ck-body {
+  max-width: 1100px; margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── LEFT PANEL ── */
+.ck-left h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+.ck-left > p { font-size: 14px; color: var(--gray); margin-bottom: 28px; }
+
+.ck-section-title {
+  font-size: 14px; font-weight: 700;
+  margin-bottom: 14px; color: var(--black);
+}
+
+/* Saved cards */
+.ck-saved-card {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.ck-saved-card-row {
+  display: flex; align-items: center;
+  padding: 16px 20px; gap: 16px;
+  cursor: pointer;
+}
+.ck-radio-gold {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid #c9a84c; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ck-radio-gold.selected::after {
+  content: ''; width: 10px; height: 10px;
+  border-radius: 50%; background: #c9a84c;
+}
+.ck-visa-logo {
+  font-size: 13px; font-weight: 900; color: #1a1f71;
+  background: #f0f2ff; padding: 4px 8px; border-radius: 4px;
+}
+.ck-card-info { flex: 1; }
+.ck-card-info h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.ck-card-info p  { font-size: 12px; color: var(--gray); }
+.ck-card-holder { font-size: 13px; font-weight: 600; color: var(--gray); margin-right: 12px; }
+.ck-card-dots { background: none; border: none; cursor: pointer; color: var(--gray); font-size: 18px; }
+
+.ck-add-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px; font-weight: 600;
+  color: var(--black);
+  margin-bottom: 28px;
+  transition: background 0.2s;
+}
+.ck-add-card:hover { background: #fafafa; }
+.ck-add-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid #c9a84c; color: #c9a84c;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 300;
+}
+
+/* Other Payment Methods */
+.ck-methods { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
+.ck-method-row {
+  display: flex; align-items: center;
+  padding: 16px 20px; gap: 16px;
+  background: var(--white);
+  cursor: pointer;
+  border: 1px solid var(--light-gray);
+  transition: background 0.2s;
+}
+.ck-method-row:first-child { border-radius: 12px 12px 0 0; }
+.ck-method-row:last-child  { border-radius: 0 0 12px 12px; }
+.ck-method-row:not(:last-child) { border-bottom: none; }
+.ck-method-row:hover { background: #fafafa; }
+.ck-method-radio {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid #ddd; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.ck-method-radio.selected { border-color: #c9a84c; }
+.ck-method-radio.selected::after {
+  content: ''; width: 10px; height: 10px;
+  border-radius: 50%; background: #c9a84c;
+}
+.ck-method-icon-box {
+  width: 36px; height: 28px;
+  background: #f5f5f5; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 800; color: #555;
+}
+.ck-method-text { flex: 1; }
+.ck-method-text h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.ck-method-text p  { font-size: 12px; color: var(--gray); }
+.ck-method-logos { display: flex; gap: 6px; align-items: center; }
+.ck-logo-pill {
+  font-size: 9px; font-weight: 800;
+  padding: 3px 7px; border-radius: 4px;
+}
+.ck-logo-gpay   { background: #fff; border: 1px solid #ddd; color: #333; }
+.ck-logo-phone  { background: #5f259f; color: white; }
+.ck-logo-paytm  { background: #00b9f1; color: white; }
+.ck-logo-visa   { background: #1a1f71; color: white; }
+.ck-logo-mc     { background: #eb001b; color: white; }
+.ck-logo-rupay  { background: #1a6c3a; color: white; }
+.ck-logo-paytmw { background: #00b9f1; color: white; }
+.ck-logo-mobikwik{ background: #3c3c8f; color: white; }
+.ck-logo-amazon  { background: #ff9900; color: white; }
+.ck-method-arrow { color: #ccc; }
+
+/* Coupon */
+.ck-coupon-box {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.ck-coupon-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; cursor: pointer;
+}
+.ck-coupon-header-left { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; }
+.ck-coupon-body { padding: 0 20px 16px; }
+.ck-coupon-row { display: flex; gap: 10px; }
+.ck-coupon-input {
+  flex: 1; border: 1px solid var(--light-gray); border-radius: 8px;
+  padding: 12px 16px; font-size: 14px; font-family: var(--font);
+  outline: none; transition: border-color 0.2s;
+}
+.ck-coupon-input:focus { border-color: #c9a84c; }
+.ck-coupon-apply {
+  padding: 12px 20px;
+  border: 1px solid #c9a84c; color: #c9a84c;
+  background: var(--white); border-radius: 8px;
+  font-weight: 700; font-size: 14px; cursor: pointer;
+  transition: all 0.2s;
+}
+.ck-coupon-apply:hover { background: #c9a84c; color: white; }
+
+.ck-secure-note {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--gray); margin-bottom: 20px;
+}
+
+/* Pay button */
+.ck-pay-btn {
+  width: 100%; padding: 18px;
+  background: linear-gradient(135deg, #c9a84c, #e8c96a, #c9a84c);
+  color: white; border: none; border-radius: 12px;
+  font-size: 16px; font-weight: 800;
+  cursor: pointer; letter-spacing: 0.5px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.35);
+}
+.ck-pay-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+.ck-pay-terms {
+  text-align: center; font-size: 12px;
+  color: var(--gray); margin-top: 10px;
+}
+.ck-pay-terms a { color: #c9a84c; text-decoration: none; font-weight: 600; }
+
+/* ── RIGHT PANEL ── */
+.ck-right { position: sticky; top: 20px; }
+.ck-summary-card {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 16px;
+  padding: 24px;
+}
+.ck-summary-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 20px; }
+
+.ck-order-items { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+.ck-order-item  { display: flex; gap: 14px; }
+.ck-order-item-img {
+  width: 70px; height: 80px; object-fit: cover;
+  border-radius: 8px; background: #f5f5f5; flex-shrink: 0;
+}
+.ck-order-item-info { flex: 1; }
+.ck-order-item-info h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.ck-order-item-info p  { font-size: 12px; color: var(--gray); }
+.ck-order-item-price   { font-size: 14px; font-weight: 700; }
+
+.ck-divider { height: 1px; background: var(--light-gray); margin: 16px 0; }
+
+.ck-price-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+.ck-price-row span:first-child { color: var(--gray); }
+.ck-discount-val { color: #22c55e; font-weight: 700; }
+.ck-free-val     { color: #22c55e; font-weight: 700; }
+.ck-total-row {
+  display: flex; justify-content: space-between;
+  font-size: 18px; font-weight: 800;
+  margin: 16px 0 8px;
+}
+.ck-total-sub { font-size: 11px; color: var(--gray); margin-bottom: 20px; }
+
+.ck-badges { display: flex; flex-direction: column; gap: 12px; }
+.ck-badge-item { display: flex; align-items: center; gap: 12px; }
+.ck-badge-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #fafafa; border: 1px solid var(--light-gray);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ck-badge-icon svg { width: 18px; height: 18px; color: #c9a84c; }
+.ck-badge-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.ck-badge-item p  { font-size: 11px; color: var(--gray); }
+
+/* Success */
+.ck-success {
+  text-align: center; padding: 40px 20px;
+}
+.ck-success-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: #e8f5e9; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.ck-success h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.ck-success p  { color: var(--gray); font-size: 14px; margin-bottom: 6px; }
+
+@media (max-width: 900px) {
+  .ck-body { grid-template-columns: 1fr; }
+  .ck-right { position: static; }
+  .ck-step-line { width: 40px; }
+  .ck-topnav { padding: 14px 16px; }
+}

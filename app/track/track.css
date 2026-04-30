@@ -1,0 +1,353 @@
+.track-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.track-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.track-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.track-subtitle {
+  color: var(--gray);
+  font-size: 15px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.track-settings-btn {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--black);
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.track-settings-btn:hover {
+  background: #fcfcfc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.track-input-card {
+  background: #fafafa;
+  border: 1px solid var(--light-gray);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 48px;
+}
+
+.track-input-card label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.track-search-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.track-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray);
+  width: 20px;
+  height: 20px;
+}
+
+.track-search-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--white);
+}
+.track-search-input:focus {
+  border-color: var(--black);
+}
+
+.track-btn-black {
+  width: 100%;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 16px;
+}
+.track-btn-black:hover {
+  background: #333;
+}
+
+.track-helper-text {
+  font-size: 13px;
+  color: #999;
+}
+
+.track-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.track-section-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--black);
+  margin: 0;
+}
+
+.track-view-all {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.track-orders-list {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.track-order-item {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  gap: 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid var(--light-gray);
+}
+.track-order-item:last-child {
+  border-bottom: none;
+}
+.track-order-item:hover {
+  background: #fafafa;
+}
+
+.track-order-img {
+  width: 72px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--cream);
+}
+
+.track-order-info {
+  flex: 1;
+}
+
+.track-order-info h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.track-order-info p {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+
+.track-order-info span {
+  font-size: 13px;
+  color: #999;
+}
+
+.track-order-status-block {
+  text-align: right;
+  margin-right: 16px;
+}
+
+.track-status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.track-status-msg {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.status-delivered {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-transit {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.status-processing {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.track-arrow {
+  width: 16px;
+  height: 16px;
+  color: #ccc;
+}
+
+.track-support-link {
+  font-size: 14px;
+  color: var(--gray);
+  margin-bottom: 48px;
+}
+.track-support-link a {
+  color: var(--black);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.track-help-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+  border: 1px solid var(--light-gray);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 48px;
+}
+
+.track-help-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.track-help-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.track-help-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--black);
+}
+
+.track-help-text h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.track-help-text p {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.track-help-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.track-help-btn:hover {
+  background: #333;
+}
+
+.track-assurances {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.track-assurance-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.track-assurance-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--black);
+}
+
+.track-assurance-info h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.track-assurance-info p {
+  font-size: 11px;
+  color: var(--gray);
+}
+
+@media (max-width: 900px) {
+  .track-order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .track-order-status-block {
+    text-align: left;
+    margin-right: 0;
+  }
+  .track-help-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .track-assurances { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
+  .track-assurances { grid-template-columns: 1fr; }
+}
