@@ -19,13 +19,22 @@ export default function ProductPage({ params }) {
     );
   }
 
-  const { addToCart, toggleWishlist, isInWishlist, openAuth, currentUser } = useAppContext();
+  const { addToCart, toggleWishlist, isInWishlist } = useAppContext();
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [mainImg, setMainImg] = useState(product.image);
+  const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
   
   const inWishlist = isInWishlist(product.id);
-
   const recommended = products.filter(x => x.category === product.category && x.id !== product.id).slice(0, 4);
+
+  const handleAddToCart = () => {
+    setIsAdding(true);
+    addToCart(product, selectedSize, quantity);
+    setTimeout(() => setIsAdding(false), 800);
+  };
+
+  const totalPrice = product.price * quantity;
 
   return (
     <div className="container" style={{ padding: '40px 24px' }}>
@@ -83,11 +92,34 @@ export default function ProductPage({ params }) {
             </div>
           </div>
 
+          <div className="pdp-quantity" style={{ marginTop: '32px' }}>
+             <h4 style={{ marginBottom: '12px', fontSize: '14px' }}>Quantity:</h4>
+             <div className="qty-selector" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <button 
+                  onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                  style={{ width: '40px', height: '40px', border: '1px solid #ddd', background: 'white', cursor: 'pointer', fontSize: '18px' }}
+                >−</button>
+                <span style={{ fontSize: '18px', fontWeight: 600, minWidth: '20px', textAlign: 'center' }}>{quantity}</span>
+                <button 
+                  onClick={() => setQuantity(prev => prev + 1)}
+                  style={{ width: '40px', height: '40px', border: '1px solid #ddd', background: 'white', cursor: 'pointer', fontSize: '18px' }}
+                >+</button>
+                <span style={{ marginLeft: '20px', fontSize: '16px', color: 'var(--gray)' }}>Total: <strong>₹{totalPrice}</strong></span>
+             </div>
+          </div>
+
           <div style={{ display: 'flex', gap: '16px', marginTop: '32px' }}>
             {product.comingSoon ? (
               <button className="hero-btn" style={{ flex: 1, background: '#888', cursor: 'not-allowed' }}>COMING SOON</button>
             ) : (
-              <button className="hero-btn" style={{ flex: 1 }} onClick={() => addToCart(product, selectedSize)}>ADD TO CART</button>
+              <button 
+                className={`hero-btn ${isAdding ? 'loading' : ''}`} 
+                style={{ flex: 1, opacity: isAdding ? 0.7 : 1 }} 
+                onClick={handleAddToCart}
+                disabled={isAdding}
+              >
+                {isAdding ? 'ADDING...' : 'ADD TO CART'}
+              </button>
             )}
             <button 
               className={`wishlist-btn-large ${inWishlist ? 'active' : ''}`} 
@@ -143,10 +175,12 @@ export default function ProductPage({ params }) {
                   <img src={`/${r.image}`} alt={r.name} className="product-img" />
                   {r.comingSoon && <div className="product-badge badge-sale" style={{ background: '#555' }}>COMING SOON</div>}
                 </Link>
-                <Link href={`/product/${r.id}`} className="product-info" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
-                  <p className="product-name">{r.name}</p>
-                  <p className="product-price">₹{r.price}</p>
-                </Link>
+                <div className="product-info-new">
+                  <Link href={`/product/${r.id}`} className="prod-meta" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
+                    <p className="prod-name-new">{r.name}</p>
+                    <p className="prod-price-new">₹{r.price}</p>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

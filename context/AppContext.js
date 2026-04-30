@@ -20,27 +20,32 @@ export function AppProvider({ children }) {
   const [isChatSidebarOpen, setIsChatSidebarOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+  
+  // Toast state
+  const [toast, setToast] = useState(null);
 
   // Load from localStorage on mount
   useEffect(() => {
     try {
-      const user = JSON.parse(localStorage.getItem("sf_user"));
-      if (user) setCurrentUser(user);
-      
-      const cart = JSON.parse(localStorage.getItem("sf_cart"));
-      if (cart) setCartItems(cart);
-      
-      const wishlist = JSON.parse(localStorage.getItem("sf_wishlist"));
-      if (wishlist) setWishlistItems(wishlist);
-      
-      const orders = JSON.parse(localStorage.getItem("sf_orders"));
-      if (orders) setOrderHistory(orders);
+      if (typeof window !== "undefined") {
+        const user = JSON.parse(localStorage.getItem("sf_user"));
+        if (user) setCurrentUser(user);
+        
+        const cart = JSON.parse(localStorage.getItem("sf_cart"));
+        if (cart) setCartItems(cart);
+        
+        const wishlist = JSON.parse(localStorage.getItem("sf_wishlist"));
+        if (wishlist) setWishlistItems(wishlist);
+        
+        const orders = JSON.parse(localStorage.getItem("sf_orders"));
+        if (orders) setOrderHistory(orders);
 
-      const cards = JSON.parse(localStorage.getItem("sf_cards"));
-      if (cards) setSavedCards(cards);
+        const cards = JSON.parse(localStorage.getItem("sf_cards"));
+        if (cards) setSavedCards(cards);
 
-      const addresses = JSON.parse(localStorage.getItem("sf_addresses"));
-      if (addresses) setSavedAddresses(addresses);
+        const addresses = JSON.parse(localStorage.getItem("sf_addresses"));
+        if (addresses) setSavedAddresses(addresses);
+      }
     } catch (e) {
       console.error("Error loading state from localStorage", e);
     }
@@ -74,6 +79,11 @@ export function AppProvider({ children }) {
   const deliveryFee = 50;
 
   // UI Actions
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
   const closeAllOverlays = () => {
     setIsSidebarOpen(false);
     setIsWishlistSidebarOpen(false);
@@ -92,39 +102,73 @@ export function AppProvider({ children }) {
   const closeCheckout = () => setIsCheckoutModalOpen(false);
 
   // Cart Actions
-  const addToCart = (product, size) => {
-    setCartItems(prev => [...prev, { ...product, cartId: Date.now(), selectedSize: size || "" }]);
-    // We could show a toast here
+  const addToCart = (product, size, qty = 1) => {
+    setCartItems(prev => {
+      const existing = prev.find(item => item.id === product.id && item.selectedSize === size);
+      if (existing) {
+        return prev.map(item => 
+          (item.id === product.id && item.selectedSize === size) 
+          ? { ...item, quantity: item.quantity + qty } 
+          : item
+        );
+      }
+      return [...prev, { ...product, cartId: Date.now(), selectedSize: size || "", quantity: qty }];
+    });
+    showToast(`${product.name} added to cart!`);
   };
+
+  const updateQuantity = (cartId, delta) => {
+    setCartItems(prev => prev.map(item => {
+      if (item.cartId === cartId) {
+        const newQty = Math.max(1, item.quantity + delta);
+        return { ...item, quantity: newQty };
+      }
+      return item;
+    }));
+  };
+
   const removeFromCart = (cartId) => {
     setCartItems(prev => prev.filter(item => item.cartId !== cartId));
+    showToast("Item removed from cart", "info");
   };
+
   const clearCart = () => setCartItems([]);
 
   // Wishlist Actions
   const toggleWishlist = (product) => {
     setWishlistItems(prev => {
       const exists = prev.find(item => item.id === product.id);
-      if (exists) return prev.filter(item => item.id !== product.id);
+      if (exists) {
+        showToast("Removed from wishlist", "info");
+        return prev.filter(item => item.id !== product.id);
+      }
+      showToast("Added to wishlist!");
       return [...prev, product];
     });
   };
+
   const removeFromWishlist = (id) => {
     setWishlistItems(prev => prev.filter(item => item.id !== id));
   };
+
   const isInWishlist = (id) => wishlistItems.some(item => item.id === id);
 
   // Auth Actions
   const login = (email, name, phone) => {
     setCurrentUser({ name, email, phone, id: Date.now() });
     setIsAuthModalOpen(false);
+    showToast(`Welcome back, ${name}!`);
   };
+
   const updateProfile = (updatedUser) => {
     setCurrentUser(prev => ({ ...prev, ...updatedUser }));
+    showToast("Profile updated!");
   };
+
   const logout = () => {
     setCurrentUser(null);
     localStorage.removeItem("sf_user");
+    showToast("Logged out successfully");
   };
 
   // Order Actions
@@ -135,7 +179,9 @@ export function AppProvider({ children }) {
   // Card Actions
   const addCard = (card) => {
     setSavedCards(prev => [...prev, { ...card, id: Date.now() }]);
+    showToast("Card saved!");
   };
+
   const removeCard = (id) => {
     setSavedCards(prev => prev.filter(c => c.id !== id));
   };
@@ -143,17 +189,19 @@ export function AppProvider({ children }) {
   // Address Actions
   const addAddress = (address) => {
     setSavedAddresses(prev => [...prev, { ...address, id: Date.now() }]);
+    showToast("Address saved!");
   };
+
   const removeAddress = (id) => {
     setSavedAddresses(prev => prev.filter(a => a.id !== id));
   };
 
   return (
     <AppContext.Provider value={{
-      currentUser, cartItems, wishlistItems, orderHistory, deliveryFee,
+      currentUser, cartItems, wishlistItems, orderHistory, deliveryFee, toast,
       isSidebarOpen, isWishlistSidebarOpen, isCartSidebarOpen, isChatSidebarOpen, isAuthModalOpen, isCheckoutModalOpen,
       closeAllOverlays, openSidebar, openWishlist, openCart, openChat, openAuth, openCheckout, closeCheckout,
-      addToCart, removeFromCart, clearCart,
+      addToCart, removeFromCart, updateQuantity, clearCart, showToast,
       toggleWishlist, removeFromWishlist, isInWishlist,
       login, logout, updateProfile,
       addOrder, addCard, removeCard, savedCards,

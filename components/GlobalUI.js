@@ -10,8 +10,8 @@ export default function GlobalUI() {
     currentUser, cartItems, wishlistItems, deliveryFee,
     isSidebarOpen, isWishlistSidebarOpen, isCartSidebarOpen, isChatSidebarOpen, isAuthModalOpen, isCheckoutModalOpen,
     closeAllOverlays, openAuth, closeCheckout, openCheckout, openWishlist, openChat,
-    removeFromCart, removeFromWishlist, toggleWishlist,
-    login, logout, addOrder, clearCart
+    removeFromCart, updateQuantity, removeFromWishlist, toggleWishlist,
+    login, logout, addOrder, clearCart, toast
   } = useAppContext();
 
   const pathname = usePathname();
@@ -42,7 +42,7 @@ export default function GlobalUI() {
   const [paymentMethod, setPaymentMethod] = useState('razorpay');
   const [orderId, setOrderId] = useState('');
 
-  const cartSubtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
+  const cartSubtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const finalTotal = cartSubtotal + deliveryFee - discount;
 
   const applyCoupon = () => {
@@ -224,8 +224,13 @@ export default function GlobalUI() {
               <div className="cart-item" key={`c-${item.cartId}`}>
                 <img src={`/${item.image}`} className="cart-item-img" alt={item.name} />
                 <div className="cart-item-info">
-                  <div className="cart-item-title">{item.name}</div>
+                  <div className="cart-item-title">{item.name} <span className="cart-item-size">({item.selectedSize})</span></div>
                   <div className="cart-item-price">₹{item.price}</div>
+                  <div className="qty-ctrl-small">
+                    <button onClick={() => updateQuantity(item.cartId, -1)}>−</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => updateQuantity(item.cartId, 1)}>+</button>
+                  </div>
                   <button className="remove-btn" onClick={() => removeFromCart(item.cartId)}>Remove</button>
                 </div>
               </div>
@@ -237,6 +242,7 @@ export default function GlobalUI() {
           <div className="cart-row"><span>Delivery:</span> <span>₹{deliveryFee}</span></div>
           <div className="cart-row total"><span>Total:</span> <span>₹{cartSubtotal + deliveryFee}</span></div>
           <button className="hero-btn checkout-btn" onClick={() => { closeAllOverlays(); if(!currentUser) { openAuth(); } else { router.push('/checkout'); } }}>PROCEED TO CHECKOUT</button>
+          <Link href="/cart" className="view-cart-link" onClick={closeAllOverlays}>VIEW FULL BAG</Link>
         </div>
       </aside>
 
@@ -350,6 +356,16 @@ export default function GlobalUI() {
           )}
         </div>
       </div>
+
+      {/* TOAST NOTIFICATION */}
+      {toast && (
+        <div className={`toast-notify ${toast.type}`}>
+          <div className="toast-icon">
+            {toast.type === 'success' ? '✓' : 'ℹ'}
+          </div>
+          <div className="toast-msg">{toast.message}</div>
+        </div>
+      )}
     </>
   );
 }
