@@ -189,7 +189,7 @@ export default function ProductPage({ params }) {
               <div style={{ display: 'inline-flex', alignItems: 'center', border: '1px solid #E5E7EB', borderRadius: '12px', background: '#fff' }}>
                 <button onClick={() => setQuantity(Math.max(1, quantity - 1))} style={{ width: '44px', height: '44px', border: 'none', background: 'none', cursor: 'pointer', fontSize: '20px', color: '#9CA3AF' }}>−</button>
                 <span style={{ width: '40px', textAlign: 'center', fontWeight: 800, fontSize: '16px' }}>{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)} style={{ width: '44px', height: '44px', border: 'none', background: 'none', cursor: 'pointer', fontSize: '20px', color: '#9CA3AF' }}>+</button>
+                <button onClick={() => setQuantity(Math.min(10, quantity + 1))} style={{ width: '44px', height: '44px', border: 'none', background: 'none', cursor: 'pointer', fontSize: '20px', color: '#9CA3AF' }}>+</button>
               </div>
               <span style={{ fontSize: '14px', color: '#9CA3AF' }}>Total: <strong style={{ color: '#111', fontSize: '18px' }}>₹{totalPrice}</strong></span>
             </div>
@@ -197,20 +197,6 @@ export default function ProductPage({ params }) {
 
           {/* CTA BUTTONS (NEW STYLE) */}
           <div style={{ marginBottom: '40px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
-              <span style={{ fontSize: '14px', color: '#555' }}>Quantity</span>
-              <select 
-                value={quantity} 
-                onChange={(e) => setQuantity(Number(e.target.value))}
-                style={{ 
-                  padding: '8px 16px', borderRadius: '8px', border: '1px solid #E5E7EB', 
-                  fontSize: '14px', fontWeight: 600, outline: 'none', cursor: 'pointer',
-                  background: '#F9FAFB'
-                }}
-              >
-                {[1,2,3,4,5].map(n => <option key={n} value={n}>{n < 10 ? `0${n}` : n}</option>)}
-              </select>
-            </div>
 
             <div style={{ display: 'flex', gap: '12px', marginBottom: '20px' }}>
               <button
