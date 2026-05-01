@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import GlobalUI from '../components/GlobalUI';
 import AIChatBot from '../components/AIChatBot';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
 
 export const metadata = {
@@ -27,6 +29,7 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
           <AIChatBot />
+          <ToastContainer position="bottom-right" theme="dark" />
         </AppProvider>
       </body>
     </html>

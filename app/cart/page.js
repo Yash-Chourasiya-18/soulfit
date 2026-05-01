@@ -21,104 +21,109 @@ export default function CartPage() {
   };
 
   return (
-    <div className="container" style={{ padding: '60px 24px 120px', minHeight: '80vh' }}>
-      {/* ── HEADER ── */}
-      <div style={{ marginBottom: '60px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>Your Shopping Bag</h1>
-        <p style={{ color: '#666', marginTop: '8px', fontSize: '14px' }}>{cartItems.length} items in your collection</p>
-      </div>
+    <div className="container" style={{ padding: '60px 24px', minHeight: '80vh' }}>
+      <h1 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '40px' }}>Your Shopping Bag</h1>
 
       {cartItems.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '100px 0' }}>
-          <div style={{ fontSize: '64px', marginBottom: '24px' }}>👜</div>
-          <h3 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '32px', color: '#999' }}>Your bag is empty</h3>
-          <Link href="/shop" className="primary-btn-premium" style={{ display: 'inline-block', maxWidth: '300px', textDecoration: 'none' }}>Start Exploring</Link>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ccc" strokeWidth="1" width="80" height="80" style={{ marginBottom: '24px' }}>
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <h3 style={{ fontSize: '20px', color: '#888', marginBottom: '24px' }}>Your cart is empty</h3>
+          <Link href="/shop" className="hero-btn">Start Shopping</Link>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '60px' }}>
-          {/* ── ITEMS LIST ── */}
-          <div>
-            <div style={{ borderBottom: '1px solid #eee', paddingBottom: '20px', marginBottom: '40px', display: 'none' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 150px 100px', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', color: '#999' }}>
-                <span>Product</span>
-                <span style={{ textAlign: 'center' }}>Quantity</span>
-                <span style={{ textAlign: 'right' }}>Total</span>
-              </div>
+        <div className="cart-page-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '60px' }}>
+          {/* List Section */}
+          <div className="cart-items-list">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px 150px 100px', paddingBottom: '16px', borderBottom: '1px solid #eee', marginBottom: '24px', fontSize: '13px', fontWeight: 600, color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>
+              <span>Product</span>
+              <span style={{ textAlign: 'center' }}>Price</span>
+              <span style={{ textAlign: 'center' }}>Quantity</span>
+              <span style={{ textAlign: 'right' }}>Total</span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-              {cartItems.map(item => (
-                <div key={item.cartId} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: '24px', alignItems: 'start' }}>
-                  <img src={`/${item.image}`} alt={item.name} style={{ width: '120px', height: '150px', objectFit: 'cover', borderRadius: '8px', background: '#f9f9f9' }} />
-                  
-                  <div style={{ flex: 1 }}>
-                    <h4 style={{ fontSize: '16px', fontWeight: 800, marginBottom: '6px' }}>{item.name}</h4>
-                    <p style={{ fontSize: '13px', color: '#666', marginBottom: '4px' }}>Size: {item.selectedSize}</p>
-                    <p style={{ fontSize: '15px', fontWeight: 900, marginTop: '8px' }}>₹{item.price}</p>
-                    
-                    <div className="qty-control-premium" style={{ marginTop: '20px' }}>
-                      <button className="qty-btn-premium" onClick={() => updateQuantity(item.cartId, -1)}>−</button>
-                      <span style={{ fontSize: '13px', fontWeight: 800 }}>{item.quantity}</span>
-                      <button className="qty-btn-premium" onClick={() => updateQuantity(item.cartId, 1)}>+</button>
-                    </div>
-                  </div>
-
-                  <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
-                    <p style={{ fontSize: '16px', fontWeight: 900 }}>₹{item.price * item.quantity}</p>
-                    <button 
+            {cartItems.map(item => (
+              <div key={item.cartId} style={{ display: 'grid', gridTemplateColumns: '1fr 120px 150px 100px', alignItems: 'center', padding: '24px 0', borderBottom: '1px solid #f9f9f9' }}>
+                <div style={{ display: 'flex', gap: '20px' }}>
+                  <img src={`/${item.image}`} alt={item.name} style={{ width: '100px', height: '120px', objectFit: 'cover', borderRadius: '8px' }} />
+                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <h4 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '4px' }}>{item.name}</h4>
+                    <p style={{ fontSize: '13px', color: '#888', marginBottom: '12px' }}>Size: {item.selectedSize}</p>
+                    <button
                       onClick={() => removeFromCart(item.cartId)}
-                      style={{ background: 'none', border: 'none', fontSize: '11px', textTransform: 'uppercase', fontWeight: 800, color: '#999', cursor: 'pointer', textDecoration: 'underline' }}
+                      style={{ background: 'none', border: 'none', color: '#ff4d4d', fontSize: '12px', fontWeight: 600, cursor: 'pointer', padding: 0, width: 'fit-content', textDecoration: 'underline' }}
                     >
                       Remove
                     </button>
                   </div>
                 </div>
-              ))}
-            </div>
+
+                <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: 600 }}>₹{item.price}</div>
+
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px', border: '1px solid #eee', padding: '6px 12px', borderRadius: '6px' }}>
+                    <button
+                      onClick={() => updateQuantity(item.cartId, -1)}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '16px', color: '#888' }}
+                    >−</button>
+                    <span style={{ fontWeight: 700, minWidth: '15px', textAlign: 'center' }}>{item.quantity}</span>
+                    <button
+                      onClick={() => updateQuantity(item.cartId, 1)}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '16px', color: '#888' }}
+                    >+</button>
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'right', fontSize: '15px', fontWeight: 800 }}>₹{item.price * item.quantity}</div>
+              </div>
+            ))}
+
+            <Link href="/shop" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '32px', fontSize: '14px', fontWeight: 600, color: 'var(--black)', textDecoration: 'none' }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+              Continue Shopping
+            </Link>
           </div>
 
-          {/* ── SUMMARY ── */}
-          <div style={{ maxWidth: '400px', marginLeft: 'auto', width: '100%' }}>
-            <div style={{ background: '#f9f9f9', padding: '40px', borderRadius: '16px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '32px' }}>Order Summary</h3>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-                  <span>Subtotal</span>
-                  <span>₹{subtotal}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-                  <span>Estimated Shipping</span>
-                  <span>{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span>
-                </div>
-                <div style={{ height: '1px', background: '#eee', margin: '16px 0' }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '20px', fontWeight: 900 }}>
-                  <span>Total</span>
-                  <span>₹{total}</span>
-                </div>
+          {/* Summary Section */}
+          <div className="cart-summary-card" style={{ background: '#fcfcfc', padding: '32px', borderRadius: '16px', height: 'fit-content', border: '1px solid #f0f0f0' }}>
+            <h3 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '24px' }}>Order Summary</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '15px', color: '#555' }}>
+                <span>Subtotal</span>
+                <span>₹{subtotal}</span>
               </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '15px', color: '#555' }}>
+                <span>Shipping</span>
+                <span>₹{deliveryFee}</span>
+              </div>
+              <div style={{ margin: '16px 0', height: '1px', background: '#eee' }}></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 800, color: 'var(--black)' }}>
+                <span>Total</span>
+                <span>₹{total}</span>
+              </div>
+            </div>
 
-              <button 
-                className="primary-btn-premium" 
-                style={{ marginTop: '40px' }}
-                onClick={handleCheckout}
-              >
-                Continue to Checkout
-              </button>
-              
-              <Link href="/shop" style={{ display: 'block', textAlign: 'center', marginTop: '24px', fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', color: '#666', textDecoration: 'none' }}>
-                Back to Shop
-              </Link>
+            <button
+              className="hero-btn w-100"
+              style={{ marginTop: '32px' }}
+              onClick={handleCheckout}
+            >
+              PROCEED TO CHECKOUT
+            </button>
+
+            <div style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center' }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#27ae60" strokeWidth="2" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: '#27ae60' }}>Secure Checkout Guaranteed</span>
             </div>
           </div>
         </div>
       )}
 
+      {/* Media Queries (Inline-like via simple Responsive adjustment) */}
       <style jsx>{`
-        @media (min-width: 1024px) {
-          div[style*="gridTemplateColumns: 1fr"] {
-            grid-template-columns: 1fr 400px !important;
-          }
+        @media (max-width: 992px) {
+          .cart-page-layout { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
       `}</style>
     </div>
