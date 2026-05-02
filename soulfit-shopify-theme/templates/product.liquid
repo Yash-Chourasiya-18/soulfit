@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+      <div class="product-gallery">
+        <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" style="width: 100%; border-radius: 20px;">
+      </div>
+      <div class="product-details">
+        <h1 style="font-size: 32px; font-weight: 800; margin-bottom: 10px;">{{ product.title }}</h1>
+        <div style="font-size: 24px; font-weight: 700; margin-bottom: 20px; color: var(--accent);">{{ product.price | money }}</div>
+        
+        <div style="margin-bottom: 30px; line-height: 1.6; color: var(--gray);">
+          {{ product.description }}
+        </div>
+
+        {% form 'product', product %}
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          
+          <div style="margin-bottom: 20px;">
+            <label for="Quantity" style="display: block; font-weight: 700; margin-bottom: 8px;">Quantity</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="input-field" style="width: 80px;">
+          </div>
+
+          <button type="submit" class="hero-btn" style="width: 100%; padding: 18px;">ADD TO CART</button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>

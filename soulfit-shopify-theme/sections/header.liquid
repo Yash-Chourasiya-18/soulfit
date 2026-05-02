@@ -1,0 +1,54 @@
+<header class="header" id="mainHeader">
+  <div class="header-inner">
+    <!-- LEFT: Three-dot menu button -->
+    <button class="three-dot-btn" aria-label="Menu">
+      <span class="three-dot"></span>
+      <span class="three-dot"></span>
+      <span class="three-dot"></span>
+    </button>
+
+    <!-- CENTER: Logo Text -->
+    <div class="header-logo-center">
+      <a href="/" class="logo-text">
+        <span class="logo-soul">SOUL</span><span class="logo-divider">|</span><span class="logo-fit">FIT</span>
+        <div class="logo-sub">THREADS THAT CONNECT SOULS</div>
+      </a>
+    </div>
+
+    <!-- RIGHT: Actions -->
+    <div class="header-actions">
+      <a href="/account" class="header-btn" aria-label="Profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+        </svg>
+      </a>
+      <button class="header-btn" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+        </svg>
+      </button>
+      <a href="{{ routes.cart_url }}" class="header-btn cart-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+        <span class="cart-badge" id="cartBadge">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    }
+  ]
+}
+{% endschema %}
