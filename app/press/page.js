@@ -9,7 +9,7 @@ export default function PressPage() {
       </p>
       <div style={{ padding: '40px', border: '1px solid var(--light-gray)', borderRadius: '24px', background: '#fafafa' }}>
         <h3 style={{ marginBottom: '16px' }}>Media Kit Coming Soon</h3>
-        <p style={{ color: 'var(--gray)' }}>Contact us at <a href="mailto:press@soulfit.com" style={{ color: 'var(--black)', fontWeight: 600 }}>press@soulfit.com</a> for more information.</p>
+        <p style={{ color: 'var(--gray)' }}>Contact us at <a href="mailto:press@gharsaa.in" style={{ color: 'var(--black)', fontWeight: 600 }}>press@gharsaa.in</a> for more information.</p>
       </div>
     </div>
   );

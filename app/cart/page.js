@@ -49,7 +49,7 @@ export default function CartPage() {
                   <img src={`/${item.image}`} alt={item.name} style={{ width: '100px', height: '120px', objectFit: 'cover', borderRadius: '8px' }} />
                   <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <h4 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '4px' }}>{item.name}</h4>
-                    <p style={{ fontSize: '13px', color: '#888', marginBottom: '12px' }}>Size: {item.selectedSize}</p>
+                    <p style={{ fontSize: '13px', color: '#888', marginBottom: '12px' }}>Config: {item.selectedSize}</p>
                     <button
                       onClick={() => removeFromCart(item.cartId)}
                       style={{ background: 'none', border: 'none', color: '#ff4d4d', fontSize: '12px', fontWeight: 600, cursor: 'pointer', padding: 0, width: 'fit-content', textDecoration: 'underline' }}

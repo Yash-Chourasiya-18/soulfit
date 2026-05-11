@@ -57,20 +57,20 @@ export default function ProductPage({ params }) {
           <div className="modal-content" style={{ maxWidth: '820px', padding: '48px', borderRadius: '16px' }}>
             <button className="modal-close" onClick={() => setIsSizeGuideOpen(false)}>✕</button>
             <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-              <h2 style={{ fontSize: '26px', fontWeight: 800 }}>Size Guide</h2>
-              <p style={{ color: '#888', marginTop: '6px' }}>All measurements in inches</p>
+              <h2 style={{ fontSize: '26px', fontWeight: 800 }}>Dimension Guide</h2>
+              <p style={{ color: '#888', marginTop: '6px' }}>All measurements in inches (W x D x H)</p>
             </div>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                   <tr style={{ background: '#111', color: '#fff' }}>
-                    {['Size', 'Chest', 'Length', 'Shoulder', 'Sleeve'].map(h => (
+                    {['Product', 'Width', 'Depth', 'Height', 'Weight (kg)'].map(h => (
                       <th key={h} style={{ padding: '14px 20px', fontSize: '12px', fontWeight: 700, letterSpacing: '1px', textAlign: 'center' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {[['S', '38', '26', '16', '7.5'], ['M', '40', '27', '17', '8'], ['L', '42', '28', '18', '8'], ['XL', '44', '29', '19', '8.5'], ['2XL', '46', '30', '20', '9']].map(([size, ...vals], i) => (
+                  {[['Standard', '72"', '34"', '32"', '45'], ['Large', '84"', '36"', '32"', '52'], ['X-Large', '96"', '38"', '34"', '60']].map(([size, ...vals], i) => (
                     <tr key={size} style={{ background: i % 2 === 0 ? '#fafafa' : '#fff', borderBottom: '1px solid #eee' }}>
                       <td style={{ padding: '14px 20px', fontWeight: 800, textAlign: 'center', fontSize: '14px' }}>{size}</td>
                       {vals.map((v, j) => <td key={j} style={{ padding: '14px 20px', textAlign: 'center', color: '#555', fontSize: '14px' }}>{v}</td>)}
@@ -144,24 +144,24 @@ export default function ProductPage({ params }) {
           </div>
 
           <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#555', marginBottom: '24px' }}>
-            {product.description || "A testament to Soul Fit's commitment to quality. This garment blends contemporary aesthetics with timeless comfort — crafted for those who value detail."}
+            {product.description || "A testament to Gharsaa's commitment to quality. This piece blends contemporary aesthetics with timeless comfort — crafted for those who value detail in their home."}
           </p>
 
           {/* QUICK FEATURES (Bullet Points) */}
           <div style={{ marginBottom: '32px', padding: '20px', background: '#F9FAFB', borderRadius: '12px', border: '1px solid #F3F4F6' }}>
             <h4 style={{ fontSize: '13px', fontWeight: 800, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Product Info</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px', color: '#555', lineHeight: 2 }}>
-              <li>• Premium Knitted Cotton Fabric</li>
-              <li>• Relaxed Regular Fit</li>
-              <li>• Machine Wash Cold / Care Instructions included</li>
+              <li>• Premium Grade Materials</li>
+              <li>• Ergonomic Design for Comfort</li>
+              <li>• Expertly Crafted for Longevity</li>
             </ul>
           </div>
 
           {/* SIZE SELECTOR */}
           <div style={{ marginBottom: '28px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-              <span style={{ fontSize: '14px', fontWeight: 800, color: '#111' }}>Select Size</span>
-              <span onClick={() => setIsSizeGuideOpen(true)} style={{ fontSize: '12px', fontWeight: 600, color: '#9CA3AF', textDecoration: 'underline', cursor: 'pointer' }}>Size Guide</span>
+              <span style={{ fontSize: '14px', fontWeight: 800, color: '#111' }}>Select Configuration</span>
+              <span onClick={() => setIsSizeGuideOpen(true)} style={{ fontSize: '12px', fontWeight: 600, color: '#9CA3AF', textDecoration: 'underline', cursor: 'pointer' }}>Dimension Guide</span>
             </div>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               {product.sizes.map(s => (
@@ -297,8 +297,8 @@ export default function ProductPage({ params }) {
       <div style={{ borderTop: '1px solid #F3F4F6', paddingTop: '60px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
           <div>
-            <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#111', margin: 0 }}>The Soul Fit Edit</h3>
-            <p style={{ fontSize: '14px', color: '#9CA3AF', marginTop: '6px' }}>Handpicked essentials curated to complete your look</p>
+            <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#111', margin: 0 }}>The Gharsaa Selection</h3>
+            <p style={{ fontSize: '14px', color: '#9CA3AF', marginTop: '6px' }}>Handpicked pieces curated to elevate your living space</p>
           </div>
           <div style={{ display: 'flex', gap: '10px' }}>
             <button onClick={() => scroll('left')} style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #E5E7EB', background: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

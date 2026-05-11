@@ -2,15 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 
-const SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
+const SIZES = ['6-Seater', '8-Seater', 'King', 'Queen', 'Standard', 'N/A'];
 const PRICE_RANGES = [
   { id: 'all', label: 'All Prices' },
-  { id: 'under-500', label: 'Under ₹500' },
-  { id: '500-999', label: '₹500 - ₹999' },
-  { id: '1000-1499', label: '₹1000 - ₹1499' },
-  { id: 'above-1500', label: 'Above ₹1500' }
+  { id: 'under-20k', label: 'Under ₹20,000' },
+  { id: '20k-50k', label: '₹20,000 - ₹50,000' },
+  { id: '50k-100k', label: '₹50,000 - ₹1,00,000' },
+  { id: 'above-100k', label: 'Above ₹1,00,000' }
 ];
-const CATEGORIES = ['all', 'T-shirt', 'Shirt', 'Pant', 'Cargo'];
+const CATEGORIES = ['all', 'Sofa', 'Dining', 'Bed', 'Lighting', 'Sideboard', 'Armchair'];
 
 export default function FilterSidebar({ isOpen, onClose, filters, setFilters, onApply, onClear }) {
   const [tempFilters, setTempFilters] = useState(filters);

@@ -35,7 +35,7 @@ function renderText(text) {
   ));
 }
 
-const INITIAL_MSG = { id:1, isBot:true, text:"Hey! 👋 I'm the **Soul Fit AI** — your personal shopping assistant. I know everything about our products, prices, offers & policies. How can I help?", quickReplies:["Show all products","Best sellers","New arrivals","Current offers","Shipping info"] };
+const INITIAL_MSG = { id:1, isBot:true, text:"Welcome to **Ghar Saaj**! 👋 I am your premium Ghar Saaj AI assistant. I'm here to help you design your dream home with our luxury collection. How can I assist you today?", quickReplies:["Browse Collection","Best Sellers","Track Order","Design Consultation"] };
 
 export default function AIChatBot() {
   const { isChatSidebarOpen, setIsChatSidebarOpen, closeAllOverlays } = useAppContext();
@@ -92,7 +92,7 @@ export default function AIChatBot() {
                 </svg>
               </div>
               <div className="ai-chat-title">
-                <h3>Soul Fit AI</h3>
+                <h3>Ghar Saaj AI</h3>
                 <p><span className="ai-online-dot"></span>Online · Smart Assistant</p>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function AIChatBot() {
               <div key={msg.id}>
                 {msg.isBot && (
                   <div className="ai-bot-row">
-                    <div className="ai-bot-avatar">AI</div>
+                    <div className="ai-bot-avatar">GS</div>
                     <div className="ai-chat-msg ai-chat-bot">
                       {renderText(msg.text)}
                       {msg.products?.length > 0 && (
@@ -139,7 +139,7 @@ export default function AIChatBot() {
             ))}
             {isTyping && (
               <div className="ai-bot-row">
-                <div className="ai-bot-avatar">AI</div>
+                <div className="ai-bot-avatar">GS</div>
                 <div className="ai-chat-typing">
                   <div className="ai-chat-dot"/><div className="ai-chat-dot"/><div className="ai-chat-dot"/>
                 </div>

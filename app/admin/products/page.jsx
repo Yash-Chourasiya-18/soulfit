@@ -15,10 +15,10 @@ export default function AdminProducts() {
 
   // Mock stats
   const stats = [
-    { label: 'Total Products', value: '156', sub: 'All products', icon: 'box' },
-    { label: 'Active Products', value: '128', sub: 'Currently active', icon: 'tshirt' },
-    { label: 'Out of Stock', value: '8', sub: 'Not available', icon: 'eye' },
-    { label: 'Low Stock', value: '20', sub: 'Stock running low', icon: 'tag' },
+    { label: 'Total Products', value: '42', sub: 'All furniture pieces', icon: 'box' },
+    { label: 'Active Designs', value: '38', sub: 'Currently available', icon: 'tshirt' },
+    { label: 'Out of Stock', value: '2', sub: 'Awaiting manufacturing', icon: 'eye' },
+    { label: 'Low Stock', value: '5', sub: 'High demand items', icon: 'tag' },
   ];
 
   const getStatusStyle = (status) => {
@@ -189,11 +189,11 @@ export default function AdminProducts() {
             </thead>
             <tbody>
               {[
-                { name: 'SoulFit Oversized T-Shirt', sku: 'SF-TS-001', category: 'T-Shirts', price: '₹1,299', stock: 432, status: 'Active', date: '20 May 2024', image: 'https://placehold.co/40x40?text=T' },
-                { name: 'SoulFit Tank Top', sku: 'SF-TT-002', category: 'Tank Tops', price: '₹899', stock: 321, status: 'Active', date: '19 May 2024', image: 'https://placehold.co/40x40?text=S' },
-                { name: 'SoulFit Hoodie', sku: 'SF-HD-003', category: 'Hoodies', price: '₹1,999', stock: 278, status: 'Active', date: '18 May 2024', image: 'https://placehold.co/40x40?text=H' },
-                { name: 'SoulFit Track Pants', sku: 'SF-TP-004', category: 'Track Pants', price: '₹1,499', stock: 187, status: 'Low Stock', date: '17 May 2024', image: 'https://placehold.co/40x40?text=P' },
-                { name: 'SoulFit Cap', sku: 'SF-CAP-005', category: 'Accessories', price: '₹499', stock: 65, status: 'Out of Stock', date: '16 May 2024', image: 'https://placehold.co/40x40?text=C' },
+                { name: 'Velvet Cloud Sectional', sku: 'GHAR-SF-001', category: 'Sofa', price: '₹89,999', stock: 120, status: 'Active', date: '20 May 2024', image: 'products/velvet_sectional.png' },
+                { name: 'Marble Elegance Dining Set', sku: 'GHAR-DS-002', category: 'Dining', price: '₹1,45,000', stock: 45, status: 'Active', date: '19 May 2024', image: 'products/marble_dining_set.png' },
+                { name: 'Royal Canopy Bed', sku: 'GHAR-BD-003', category: 'Bed', price: '₹95,000', stock: 30, status: 'Active', date: '18 May 2024', image: 'products/royal_canopy_bed.png' },
+                { name: 'Aura Crystal Chandelier', sku: 'GHAR-LT-004', category: 'Lighting', price: '₹24,999', stock: 85, status: 'Low Stock', date: '17 May 2024', image: 'products/crystal_chandelier.png' },
+                { name: 'Scandi Oak Sideboard', sku: 'GHAR-ST-005', category: 'Storage', price: '₹42,000', stock: 65, status: 'Out of Stock', date: '16 May 2024', image: 'products/scandi_oak_sideboard.png' },
               ].map((p, i) => (
                 <tr key={i} style={{ borderBottom: '1px solid #f9f9f9' }}>
                   <td style={tableCellStyle}>
@@ -233,12 +233,12 @@ export default function AdminProducts() {
         
         {/* Pagination & Footer */}
         <div style={{ padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: '13px', color: '#999', fontWeight: '600' }}>Showing 1 to 5 of 156 products</span>
+          <span style={{ fontSize: '13px', color: '#999', fontWeight: '600' }}>Showing 1 to 5 of 42 products</span>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <button style={{ background: '#fff', border: '1px solid #f0f0f0', width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
               <svg width="14" height="14" fill="none" stroke="#666" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
             </button>
-            {[1, 2, 3, '...', 16].map((n, i) => (
+            {[1, 2, 3, '...', 9].map((n, i) => (
               <button 
                 key={i} 
                 style={{ 

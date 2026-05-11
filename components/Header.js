@@ -29,8 +29,8 @@ export default function Header() {
         {/* CENTER: Logo Text */}
         <div className="header-logo-center">
           <Link href="/" className="logo-text" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <span className="logo-soul">SOUL</span><span className="logo-divider">|</span><span className="logo-fit">FIT</span>
-            <div className="logo-sub">THREADS THAT CONNECT SOULS</div>
+            <span className="logo-soul">GHAR</span><span className="logo-divider">|</span><span className="logo-fit">SAAJ</span>
+            <div className="logo-sub">ELEVATE YOUR HOME</div>
           </Link>
         </div>
 

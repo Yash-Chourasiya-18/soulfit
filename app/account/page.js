@@ -50,9 +50,9 @@ export default function AccountPage() {
   };
 
   const displayOrders = orderHistory.length > 0 ? orderHistory.slice(0, 3) : [
-    { id: 'SOUL12345', total: 999, date: '12 Oct 2025', status: 'Delivered', image: '/sf_tshirt.png', name: 'Black Oversized T-Shirt' },
-    { id: 'SOUL12344', total: 1399, date: '10 Oct 2025', status: 'In Transit', image: '/sf_shirt.png', name: 'Beige Chino Pant' },
-    { id: 'SOUL12343', total: 1299, date: '05 Oct 2025', status: 'Processing', image: '/sf_cargo.png', name: 'Navy Regular Shirt' },
+    { id: 'GHAR12345', total: 89999, date: '12 Oct 2025', status: 'Delivered', image: 'products/velvet_sectional.png', name: 'Velvet Cloud Sectional' },
+    { id: 'GHAR12344', total: 145000, date: '10 Oct 2025', status: 'In Transit', image: 'products/marble_dining_set.png', name: 'Marble Elegance Dining Set' },
+    { id: 'GHAR12343', total: 24999, date: '05 Oct 2025', status: 'Processing', image: 'products/crystal_chandelier.png', name: 'Aura Crystal Chandelier' },
   ];
 
   const statusClass = (s) => {
@@ -267,7 +267,7 @@ export default function AccountPage() {
                 <div className="acc-order-item" onClick={() => router.push('/orders')} style={{ cursor: 'pointer' }}>
                   <img src={order.image || '/sf_tshirt.png'} alt="Order" onError={e => e.target.src = '/sf_tshirt.png'} />
                   <div className="acc-order-details">
-                    <h4>{order.name || (order.items?.[0]?.name) || 'Soul Fit Item'}</h4>
+                    <h4>{order.name || (order.items?.[0]?.name) || 'Gharsaa Furniture'}</h4>
                     <p>Order #{order.id}</p>
                     <span>₹{order.total?.toLocaleString('en-IN') || '—'} &bull; {order.date}</span>
                   </div>
@@ -293,10 +293,10 @@ export default function AccountPage() {
                 <img key={item.id} src={`/${item.image}`} alt={item.name}
                   onClick={() => router.push(`/product/${item.id}`)}
                   style={{ cursor: 'pointer' }}
-                  onError={e => e.target.src = '/sf_tshirt.png'} />
+                  onError={e => e.target.src = 'products/velvet_sectional.png'} />
               ))
-              : ['/sf_tshirt.png', '/sf_shirt.png', '/sf_cargo.png', '/sf_pant.png'].map((src, i) => (
-                <img key={i} src={src} alt="Wishlist Item" onClick={openWishlist} style={{ cursor: 'pointer' }} />
+              : ['products/velvet_sectional.png', 'products/marble_dining_set.png', 'products/royal_canopy_bed.png', 'products/leather_armchair.png'].map((src, i) => (
+                <img key={i} src={`/${src}`} alt="Wishlist Item" onClick={openWishlist} style={{ cursor: 'pointer' }} />
               ))
             }
           </div>

@@ -47,16 +47,16 @@ export default function GlobalUI() {
 
   const applyCoupon = () => {
     const code = couponCode.toUpperCase();
-    if (code === 'SOUL10') {
+    if (code === 'GHAR10') {
       setDiscount(Math.round(cartSubtotal * 0.1));
       setCouponMsg({ text: `Applied! 10% off (₹${Math.round(cartSubtotal * 0.1)} saved)`, error: false });
-    } else if (code === 'FIT200') {
+    } else if (code === 'HOME200') {
       setDiscount(200);
       setCouponMsg({ text: `Applied! Flat ₹200 off`, error: false });
-    } else if (code === 'SOUL20') {
+    } else if (code === 'LUXE20') {
       setDiscount(Math.round(cartSubtotal * 0.2));
       setCouponMsg({ text: `Applied! 20% off (₹${Math.round(cartSubtotal * 0.2)} saved)`, error: false });
-    } else if (code === 'VIP500') {
+    } else if (code === 'PREMIUM500') {
       setDiscount(500);
       setCouponMsg({ text: `Applied! Flat ₹500 off`, error: false });
     } else {

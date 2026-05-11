@@ -8,15 +8,15 @@ export default function ReturnsPage() {
       <div style={{ fontSize: '15px', lineHeight: 1.8, color: '#444' }}>
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--black)', marginTop: '30px', marginBottom: '12px' }}>1. Eligibility for Returns and Exchanges</h3>
         <p style={{ marginBottom: '16px' }}>Returns and exchanges are only applicable in cases where the product is defective, damaged, or incorrect at the time of delivery.</p>
-        <p style={{ marginBottom: '16px', fontWeight: 600 }}>Soul Fit does not accept returns or exchanges for:</p>
+        <p style={{ marginBottom: '16px', fontWeight: 600 }}>GHARSAAJ does not accept returns or exchanges for:</p>
         <ul style={{ paddingLeft: '20px', marginBottom: '24px' }}>
-          <li>Size issues (Please refer to size charts before ordering)</li>
+          <li>Dimension issues (Please refer to dimension guides before ordering)</li>
           <li>Change of mind</li>
           <li>Color preference</li>
         </ul>
 
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--black)', marginTop: '30px', marginBottom: '12px' }}>2. Reporting an Issue</h3>
-        <p style={{ marginBottom: '16px' }}>Customers must notify Soul Fit within 48 hours of delivery.</p>
+        <p style={{ marginBottom: '16px' }}>Customers must notify GHARSAAJ within 48 hours of delivery.</p>
         <p style={{ marginBottom: '16px' }}>The request must include:</p>
         <ul style={{ paddingLeft: '20px', marginBottom: '16px' }}>
           <li>Order details (Order ID, Name)</li>
@@ -27,8 +27,8 @@ export default function ReturnsPage() {
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--black)', marginTop: '30px', marginBottom: '12px' }}>3. Product Condition</h3>
         <p style={{ marginBottom: '16px' }}>To qualify for return or exchange:</p>
         <ul style={{ paddingLeft: '20px', marginBottom: '24px' }}>
-          <li>The item must be unused and unwashed</li>
-          <li>All original tags and packaging must be intact</li>
+          <li>The item must be in original condition with no signs of use</li>
+          <li>All original packaging must be intact</li>
         </ul>
 
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--black)', marginTop: '30px', marginBottom: '12px' }}>4. Resolution Process</h3>
@@ -43,7 +43,7 @@ export default function ReturnsPage() {
 
         <div style={{ marginTop: '60px', padding: '24px', background: '#f9f9f9', borderRadius: '12px', textAlign: 'center' }}>
           <p style={{ fontWeight: 600, color: 'var(--black)' }}>Need to report an issue?</p>
-          <p style={{ color: 'var(--gray)', marginBottom: '12px' }}>Email us with proof at support@soulfit.com</p>
+          <p style={{ color: 'var(--gray)', marginBottom: '12px' }}>Email us with proof at support@gharsaa.in</p>
           <a href="/support" style={{ color: 'var(--black)', textDecoration: 'underline', fontWeight: 700 }}>Contact Support</a>
         </div>
       </div>

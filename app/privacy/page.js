@@ -24,17 +24,17 @@ export default function PrivacyPage() {
         </ul>
 
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--black)', marginTop: '30px', marginBottom: '12px' }}>3. Data Protection</h3>
-        <p style={{ marginBottom: '24px' }}>Soul Fit takes appropriate measures to protect your personal data and ensure secure transactions. We use industry-standard encryption and security protocols.</p>
+        <p style={{ marginBottom: '24px' }}>Ghar Saaj takes appropriate measures to protect your personal data and ensure secure transactions. We use industry-standard encryption and security protocols.</p>
 
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--black)', marginTop: '30px', marginBottom: '12px' }}>4. Third-Party Sharing</h3>
-        <p style={{ marginBottom: '24px' }}>Soul Fit does not sell or share your personal information with third parties, except as required for order fulfillment (e.g., courier services like Delhivery, BlueDart).</p>
+        <p style={{ marginBottom: '24px' }}>Ghar Saaj does not sell or share your personal information with third parties, except as required for order fulfillment (e.g., courier services like Delhivery, BlueDart).</p>
 
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--black)', marginTop: '30px', marginBottom: '12px' }}>5. Consent</h3>
         <p style={{ marginBottom: '24px' }}>By using our services, you consent to the collection and use of your information as outlined in this policy.</p>
 
         <div style={{ marginTop: '60px', padding: '24px', background: '#f9f9f9', borderRadius: '12px', textAlign: 'center' }}>
           <p style={{ fontWeight: 600, color: 'var(--black)' }}>Questions about our Privacy Policy?</p>
-          <p style={{ color: 'var(--gray)' }}>Reach out at support@soulfit.com</p>
+          <p style={{ color: 'var(--gray)' }}>Reach out at support@gharsaa.in</p>
         </div>
       </div>
     </div>

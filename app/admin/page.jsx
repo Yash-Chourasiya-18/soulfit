@@ -5,34 +5,34 @@ import Link from 'next/link';
 
 export default function AdminDashboard() {
   const stats = [
-    { name: 'Total Revenue', value: '₹8,45,231', trend: '+18.5%', icon: 'wallet' },
-    { name: 'Total Orders', value: '1,243', trend: '+12.7%', icon: 'bag' },
-    { name: 'Total Customers', value: '3,892', trend: '+8.3%', icon: 'users' },
-    { name: 'Total Products', value: '156', trend: '+5.2%', icon: 'tshirt' },
+    { name: 'Total Revenue', value: '₹12,45,231', trend: '+18.5%', icon: 'wallet' },
+    { name: 'Total Orders', value: '843', trend: '+12.7%', icon: 'bag' },
+    { name: 'Total Customers', value: '1,892', trend: '+8.3%', icon: 'users' },
+    { name: 'Total Products', value: '42', trend: '+5.2%', icon: 'tshirt' },
     { name: 'Total Coupons', value: '24', trend: '+3.1%', icon: 'coupon' },
   ];
 
   const recentOrders = [
-    { id: '#SF1234', customer: 'Rohit Verma', amount: '₹2,499', status: 'Delivered' },
-    { id: '#SF1233', customer: 'Ankit Sharma', amount: '₹1,999', status: 'Shipped' },
-    { id: '#SF1232', customer: 'Priya Singh', amount: '₹1,299', status: 'Processing' },
-    { id: '#SF1231', customer: 'Sahil Khan', amount: '₹2,799', status: 'Delivered' },
-    { id: '#SF12330', customer: 'Neha Patel', amount: '₹999', status: 'Cancelled' },
+    { id: '#GHAR1234', customer: 'Rohit Verma', amount: '₹89,999', status: 'Delivered' },
+    { id: '#GHAR1233', customer: 'Ankit Sharma', amount: '₹1,45,000', status: 'Shipped' },
+    { id: '#GHAR1232', customer: 'Priya Singh', amount: '₹95,000', status: 'Processing' },
+    { id: '#GHAR1231', customer: 'Sahil Khan', amount: '₹24,999', status: 'Delivered' },
+    { id: '#GHAR12330', customer: 'Neha Patel', amount: '₹42,000', status: 'Cancelled' },
   ];
 
   const topProducts = [
-    { name: 'SoulFit Oversized T-Shirt', sold: 432, revenue: '₹2,15,568', image: 'https://placehold.co/40x40?text=T' },
-    { name: 'SoulFit Tank Top', sold: 321, revenue: '₹1,28,679', image: 'https://placehold.co/40x40?text=S' },
-    { name: 'SoulFit Hoodie', sold: 278, revenue: '₹1,95,422', image: 'https://placehold.co/40x40?text=H' },
-    { name: 'SoulFit Track Pants', sold: 187, revenue: '₹93,813', image: 'https://placehold.co/40x40?text=P' },
-    { name: 'SoulFit Cap', sold: 165, revenue: '₹41,250', image: 'https://placehold.co/40x40?text=C' },
+    { name: 'Velvet Cloud Sectional', sold: 120, revenue: '₹1,07,99,880', image: 'products/velvet_sectional.png' },
+    { name: 'Marble Elegance Dining Set', sold: 45, revenue: '₹65,25,000', image: 'products/marble_dining_set.png' },
+    { name: 'Royal Canopy Bed', sold: 30, revenue: '₹28,50,000', image: 'products/royal_canopy_bed.png' },
+    { name: 'Aura Crystal Chandelier', sold: 85, revenue: '₹21,24,915', image: 'products/crystal_chandelier.png' },
+    { name: 'Scandi Oak Sideboard', sold: 65, revenue: '₹27,30,000', image: 'products/scandi_oak_sideboard.png' },
   ];
 
   const activeCoupons = [
-    { code: 'SOUL10', discount: '10% OFF', expiry: '31 May 2024', status: 'Active', usage: 120 },
-    { code: 'FIT20', discount: '20% OFF', expiry: '15 Jun 2024', status: 'Active', usage: 85 },
-    { code: 'NEW30', discount: '30% OFF', expiry: '30 Jun 2024', status: 'Active', usage: 45 },
-    { code: 'WELCOME5', discount: '5% OFF', expiry: '10 Jun 2024', status: 'Active', usage: 60 },
+    { code: 'GHAR10', discount: '10% OFF', expiry: '31 May 2024', status: 'Active', usage: 120 },
+    { code: 'HOME20', discount: '20% OFF', expiry: '15 Jun 2024', status: 'Active', usage: 85 },
+    { code: 'LUXE30', discount: '30% OFF', expiry: '30 Jun 2024', status: 'Active', usage: 45 },
+    { code: 'DESIGN5', discount: '5% OFF', expiry: '10 Jun 2024', status: 'Active', usage: 60 },
     { code: 'SUMMER15', discount: '15% OFF', expiry: '01 Jul 2024', status: 'Active', usage: 30 },
   ];
 
@@ -222,11 +222,11 @@ export default function AdminDashboard() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '8px' }}>
             {[
-              { label: 'T-Shirts', value: '35%', color: '#ef4444' },
-              { label: 'Hoodies', value: '25%', color: '#10b981' },
-              { label: 'Pants', value: '20%', color: '#f97316' },
-              { label: 'Shirts', value: '10%', color: '#3b82f6' },
-              { label: 'Others', value: '10%', color: '#666' }
+              { label: 'Sofas', value: '35%', color: '#ef4444' },
+              { label: 'Beds', value: '25%', color: '#10b981' },
+              { label: 'Dining', value: '20%', color: '#f97316' },
+              { label: 'Lighting', value: '10%', color: '#3b82f6' },
+              { label: 'Storage', value: '10%', color: '#666' }
             ].map(item => (
               <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: item.color }}></div>

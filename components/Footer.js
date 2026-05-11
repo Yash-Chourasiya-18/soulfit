@@ -12,10 +12,10 @@ export default function Footer() {
       <div className="footer-v2-inner">
         {/* TOP: LOGO & TAGLINE */}
         <div className="footer-top">
-          <img src="/last.png" alt="Soul Fit" className="footer-v2-logo" />
+          <img src="/logo.png" alt="GHARSAAJ" className="footer-v2-logo" />
           <p className="footer-v2-desc">
-            Soul Fit is more than fashion — it's a feeling.<br />
-            We create threads that connect souls and celebrate individuality.
+            GHARSAAJ is more than furniture — it's a statement of elegance.<br />
+            We create pieces that resonate with your soul and celebrate the art of living.
           </p>
         </div>
 
@@ -23,10 +23,10 @@ export default function Footer() {
         <div className="footer-v2-cols">
           <div className="footer-v2-col">
             <h4><span className="gold-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></span> SHOP</h4>
-            <Link href="/shop?category=T-shirt">T-Shirts</Link>
-            <Link href="/shop?category=Shirt">Shirts</Link>
-            <Link href="/shop?category=Pant">Pants</Link>
-            <Link href="/shop?category=Cargo">Cargo</Link>
+            <Link href="/shop?category=Sofa">Sofas</Link>
+            <Link href="/shop?category=Dining">Dining Sets</Link>
+            <Link href="/shop?category=Bed">Luxury Beds</Link>
+            <Link href="/shop?category=Lighting">Designer Lighting</Link>
             <Link href="/shop?filter=new_arrivals">New Arrivals</Link>
           </div>
           <div className="footer-v2-col">
@@ -78,7 +78,7 @@ export default function Footer() {
           <div className="footer-v2-social">
             <h4>FOLLOW US</h4>
             <div className="social-icons">
-              <a href="https://instagram.com/soulfit.in" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://instagram.com/gharsaa.in" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
               <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -102,7 +102,7 @@ export default function Footer() {
               <span className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></span>
               <div>
                 <h5>EASY RETURNS</h5>
-                <p>7 days return policy</p>
+                <p>48 hours return policy</p>
               </div>
             </div>
             <div className="feat-item">
@@ -117,13 +117,13 @@ export default function Footer() {
 
         {/* VERY BOTTOM: COPYRIGHT */}
         <div className="footer-v2-copyright">
-          <p>&copy; 2024 Soul Fit. All rights reserved.</p>
+          <p>&copy; 2024 GHARSAAJ. All rights reserved.</p>
           <div className="copyright-divider">
             <span className="line"></span>
             <span className="cross">✕</span>
             <span className="line"></span>
           </div>
-          <p>Made with <span className="heart">🤍</span> for souls like yours.</p>
+          <p>Made with <span className="heart">🤍</span> for people like you.</p>
         </div>
       </div>
     </footer>

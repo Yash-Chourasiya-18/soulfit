@@ -147,16 +147,16 @@ export default function AdminAnalytics() {
           <h3 style={{ margin: '0 0 25px 0', fontSize: '16px', fontWeight: '800' }}>Top Selling Products</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {[
-              { name: 'Oversized Black T-Shirt', sales: '₹2.4L', growth: '+12%', img: 'https://placehold.co/40x40?text=T' },
-              { name: 'SoulFit Essential Hoodie', sales: '₹1.8L', growth: '+8%', img: 'https://placehold.co/40x40?text=H' },
-              { name: 'Tech Track Pants', sales: '₹1.2L', growth: '+15%', img: 'https://placehold.co/40x40?text=P' },
-              { name: 'Classic SoulFit Cap', sales: '₹85K', growth: '-2%', img: 'https://placehold.co/40x40?text=C' },
+              { name: 'Velvet Cloud Sectional', sales: '₹1.07Cr', growth: '+12%', img: 'products/velvet_sectional.png' },
+              { name: 'Marble Elegance Dining Set', sales: '₹65L', growth: '+8%', img: 'products/marble_dining_set.png' },
+              { name: 'Royal Canopy Bed', sales: '₹28L', growth: '+15%', img: 'products/royal_canopy_bed.png' },
+              { name: 'Aura Crystal Chandelier', sales: '₹21L', growth: '-2%', img: 'products/crystal_chandelier.png' },
             ].map((p, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                 <img src={p.img} alt="" style={{ width: '40px', height: '40px', borderRadius: '10px' }} />
                 <div style={{ flex: 1 }}>
                   <p style={{ margin: 0, fontSize: '13px', fontWeight: '700' }}>{p.name}</p>
-                  <p style={{ margin: 0, fontSize: '11px', color: '#999', fontWeight: '600' }}>Clothing</p>
+                  <p style={{ margin: 0, fontSize: '11px', color: '#999', fontWeight: '600' }}>Furniture</p>
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <p style={{ margin: 0, fontSize: '13px', fontWeight: '900' }}>{p.sales}</p>
@@ -195,11 +195,11 @@ export default function AdminAnalytics() {
           <h3 style={{ margin: '0 0 25px 0', fontSize: '16px', fontWeight: '800' }}>Real-time Activity</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             {[
-              { user: 'Rohit V.', action: 'placed an order for', target: '₹2,499', time: '2 mins ago', icon: '🛍️' },
+              { user: 'Rohit V.', action: 'placed an order for', target: '₹89,999', time: '2 mins ago', icon: '🛍️' },
               { user: 'Sneha R.', action: 'registered as a', target: 'new member', time: '15 mins ago', icon: '👤' },
-              { user: 'Arjun M.', action: 'applied coupon', target: 'SOUL10', time: '45 mins ago', icon: '🏷️' },
-              { user: 'Priya S.', action: 'reviewed', target: 'Oversized T-Shirt', time: '1 hr ago', icon: '⭐' },
-              { user: 'System', action: 'inventory low for', target: 'Essential Hoodie', time: '2 hrs ago', icon: '⚠️' },
+              { user: 'Arjun M.', action: 'applied coupon', target: 'GHAR10', time: '45 mins ago', icon: '🏷️' },
+              { user: 'Priya S.', action: 'reviewed', target: 'Velvet Sectional', time: '1 hr ago', icon: '⭐' },
+              { user: 'System', action: 'inventory low for', target: 'Crystal Chandelier', time: '2 hrs ago', icon: '⚠️' },
             ].map((act, i) => (
               <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                 <div style={{ width: '32px', height: '32px', backgroundColor: '#fafafa', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px' }}>{act.icon}</div>

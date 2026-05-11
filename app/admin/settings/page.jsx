@@ -120,12 +120,12 @@ export default function AdminSettings() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '25px' }}>
               <div>
                  <label style={labelStyle}>Store Name <span style={{ color: '#ef4444' }}>*</span></label>
-                 <input type="text" value="SoulFit" style={inputStyle} readOnly />
+                 <input type="text" value="Ghar Saaj" style={inputStyle} readOnly />
               </div>
               <div>
                  <label style={labelStyle}>Store Logo</label>
                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <div style={{ padding: '10px 20px', border: '1px solid #f0f0f0', borderRadius: '10px', fontWeight: '900', letterSpacing: '1px', fontSize: '18px' }}>SOULFIT</div>
+                    <div style={{ padding: '10px 20px', border: '1px solid #f0f0f0', borderRadius: '10px', fontWeight: '900', letterSpacing: '1px', fontSize: '18px' }}>GHAR SAAJ</div>
                     <button style={{ background: 'none', border: 'none', color: '#000', fontSize: '12px', fontWeight: '800', cursor: 'pointer' }}>Upload New</button>
                  </div>
                  <p style={{ margin: '5px 0 0 0', fontSize: '10px', color: '#bbb', fontWeight: '600' }}>Recommended: 512x512px (PNG)</p>
@@ -135,12 +135,12 @@ export default function AdminSettings() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '25px' }}>
               <div>
                  <label style={labelStyle}>Tagline</label>
-                 <input type="text" value="Live Fit. Live Strong." style={inputStyle} readOnly />
+                 <input type="text" value="Elevating Homes, Connecting Souls." style={inputStyle} readOnly />
               </div>
               <div>
                  <label style={labelStyle}>Favicon</label>
                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <div style={{ width: '44px', height: '44px', border: '1px solid #f0f0f0', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '14px' }}>SF</div>
+                    <div style={{ width: '44px', height: '44px', border: '1px solid #f0f0f0', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '14px' }}>GS</div>
                     <button style={{ background: 'none', border: 'none', color: '#000', fontSize: '12px', fontWeight: '800', cursor: 'pointer' }}>Upload New</button>
                  </div>
                  <p style={{ margin: '5px 0 0 0', fontSize: '10px', color: '#bbb', fontWeight: '600' }}>Recommended: 32x32px (PNG, ICO)</p>
@@ -150,7 +150,7 @@ export default function AdminSettings() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
               <div>
                  <label style={labelStyle}>Website URL <span style={{ color: '#ef4444' }}>*</span></label>
-                 <input type="text" value="https://soulfit.com" style={inputStyle} readOnly />
+                 <input type="text" value="https://gharsaa.in" style={inputStyle} readOnly />
               </div>
               <div>
                  <label style={labelStyle}>Currency <span style={{ color: '#ef4444' }}>*</span></label>
@@ -166,17 +166,17 @@ export default function AdminSettings() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '25px' }}>
               <div>
                  <label style={labelStyle}>Email Address <span style={{ color: '#ef4444' }}>*</span></label>
-                 <input type="email" value="support@soulfit.com" style={inputStyle} readOnly />
+                 <input type="email" value="support@gharsaa.in" style={inputStyle} readOnly />
               </div>
               <div>
                  <label style={labelStyle}>Address <span style={{ color: '#ef4444' }}>*</span></label>
-                 <input type="text" value="123, Fitness Street, Mumbai, Maharashtra, 400001" style={inputStyle} readOnly />
+                 <input type="text" value="123, Luxury Lane, Bhopal, Madhya Pradesh, 462001" style={inputStyle} readOnly />
               </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
               <div>
                  <label style={labelStyle}>Phone Number <span style={{ color: '#ef4444' }}>*</span></label>
-                 <input type="text" value="+91 98765 43210" style={inputStyle} readOnly />
+                 <input type="text" value="+91 81037 58319" style={inputStyle} readOnly />
               </div>
               <div>
                  <label style={labelStyle}>Store Timings</label>
@@ -191,7 +191,7 @@ export default function AdminSettings() {
                {['Facebook', 'Instagram', 'YouTube', 'Twitter'].map(soc => (
                  <div key={soc}>
                     <label style={labelStyle}>{soc}</label>
-                    <input type="text" placeholder={`https://${soc.toLowerCase()}.com/soulfit`} style={inputStyle} readOnly />
+                    <input type="text" placeholder={`https://${soc.toLowerCase()}.com/gharsaaj.in`} style={inputStyle} readOnly />
                  </div>
                ))}
             </div>

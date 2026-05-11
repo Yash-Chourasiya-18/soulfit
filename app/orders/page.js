@@ -13,11 +13,11 @@ export default function OrdersPage() {
 
   // Mock data for initial view/demo
   const mockOrders = [
-    { id: 'SF12345', date: '20 May 2024', total: 1299, items: 2, status: 'Delivered', msg: 'Delivered on 24 May 2024', image: '/sf_tshirt.png', name: 'Black Oversized T-Shirt' },
-    { id: 'SF12344', date: '18 May 2024', total: 2398, items: 3, status: 'In Transit', msg: 'Expected by 25 May 2024', image: '/sf_cargo.png', name: 'Beige Cargo Pant' },
-    { id: 'SF12343', date: '16 May 2024', total: 1199, items: 1, status: 'Processing', msg: 'We are preparing your order', image: '/sf_shirt.png', name: 'Navy Regular Shirt' },
-    { id: 'SF12342', date: '10 May 2024', total: 798, items: 2, status: 'Cancelled', msg: 'Cancelled on 11 May 2024', image: '/sf_pant.png', name: 'Grey Track Pant' },
-    { id: 'SF12341', date: '05 May 2024', total: 1499, items: 1, status: 'Delivered', msg: 'Delivered on 07 May 2024', image: '/sf_cat_shirt.png', name: 'Printed Summer Shirt' },
+    { id: 'GHAR12345', date: '20 May 2024', total: 89999, items: 1, status: 'Delivered', msg: 'Delivered on 24 May 2024', image: 'products/velvet_sectional.png', name: 'Velvet Cloud Sectional' },
+    { id: 'GHAR12344', date: '18 May 2024', total: 145000, items: 1, status: 'In Transit', msg: 'Expected by 25 May 2024', image: 'products/marble_dining_set.png', name: 'Marble Elegance Dining Set' },
+    { id: 'GHAR12343', date: '16 May 2024', total: 24999, items: 1, status: 'Processing', msg: 'We are preparing your order', image: 'products/crystal_chandelier.png', name: 'Aura Crystal Chandelier' },
+    { id: 'GHAR12342', date: '10 May 2024', total: 42000, items: 1, status: 'Cancelled', msg: 'Cancelled on 11 May 2024', image: 'products/scandi_oak_sideboard.png', name: 'Scandi Oak Sideboard' },
+    { id: 'GHAR12341', date: '05 May 2024', total: 95000, items: 1, status: 'Delivered', msg: 'Delivered on 07 May 2024', image: 'products/royal_canopy_bed.png', name: 'Royal Canopy Bed' },
   ];
 
   // Combine mock orders with real history

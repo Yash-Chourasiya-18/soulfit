@@ -14,23 +14,23 @@ export default function HomePage() {
       {/* CATEGORIES */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Category of Clothes</h2>
+          <h2 className="section-title">Shop by Category</h2>
           <div className="categories-grid">
-            <Link href="/shop?category=T-shirt" className="category-card">
-              <div className="category-img-wrap"><img src="/soulfit_category_tshirt_1777394453783.png" className="category-img" alt="T-Shirt" /></div>
-              <p className="category-name">T-Shirt</p>
+            <Link href="/shop?category=Sofa" className="category-card">
+              <div className="category-img-wrap"><img src="/cat_sofa.png" className="category-img" alt="Sofa" /></div>
+              <p className="category-name">Sofas</p>
             </Link>
-            <Link href="/shop?category=Shirt" className="category-card">
-              <div className="category-img-wrap"><img src="/soulfit_category_shirt_1777394467745.png" className="category-img" alt="Shirt" /></div>
-              <p className="category-name">Shirt</p>
+            <Link href="/shop?category=Dining" className="category-card">
+              <div className="category-img-wrap"><img src="/cat_dining.png" className="category-img" alt="Dining" /></div>
+              <p className="category-name">Dining</p>
             </Link>
-            <Link href="/shop?category=Pant" className="category-card">
-              <div className="category-img-wrap"><img src="/sf_pant.png" className="category-img" alt="Pant" /></div>
-              <p className="category-name">Pant</p>
+            <Link href="/shop?category=Bed" className="category-card">
+              <div className="category-img-wrap"><img src="/cat_bed.png" className="category-img" alt="Beds" /></div>
+              <p className="category-name">Beds</p>
             </Link>
-            <Link href="/shop?category=Cargo" className="category-card">
-              <div className="category-img-wrap"><img src="/soulfit_category_cargo_1777394485440.png" className="category-img" alt="Cargo" /></div>
-              <p className="category-name">Cargo</p>
+            <Link href="/shop?category=Lighting" className="category-card">
+              <div className="category-img-wrap"><img src="/cat_lighting.png" className="category-img" alt="Lighting" /></div>
+              <p className="category-name">Lighting</p>
             </Link>
           </div>
         </div>
@@ -54,8 +54,8 @@ export default function HomePage() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="24" height="24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
             </div>
             <div className="feature-text">
-              <div className="feature-title">Fast Delivery</div>
-              <div className="feature-sub">Within 2-4 days</div>
+              <div className="feature-title">Expert Delivery</div>
+              <div className="feature-sub">White-glove service</div>
             </div>
           </div>
           <div className="feature-divider"></div>
@@ -65,7 +65,7 @@ export default function HomePage() {
             </div>
             <div className="feature-text">
               <div className="feature-title">Easy Returns</div>
-              <div className="feature-sub">7 days return policy</div>
+              <div className="feature-sub">48 hours return policy</div>
             </div>
           </div>
         </div>
@@ -94,8 +94,8 @@ export default function HomePage() {
               <div className="assurance-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" width="24" height="24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
               </div>
-              <h4 className="assurance-title">Premium Quality</h4>
-              <p className="assurance-desc">Every piece is crafted with extreme attention to detail and finest fabrics.</p>
+              <h4 className="assurance-title">Premium Craftsmanship</h4>
+              <p className="assurance-desc">Every piece is handcrafted with the finest materials and extreme attention to detail.</p>
             </div>
             <div className="assurance-divider"></div>
             <div className="assurance-item">

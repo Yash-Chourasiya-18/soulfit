@@ -6,51 +6,51 @@ import './faq.css';
 const FAQ_DATA = [
   {
     q: "1. What products do you offer?",
-    a: "We offer a curated range of clothing designed with a focus on quality, comfort, and style. Our collection includes premium t-shirts, shirts, track pants, and cargo pants crafted for the perfect fit."
+    a: "We offer a curated range of luxury furniture designed with a focus on quality, elegance, and comfort. Our collection includes premium sofas, dining sets, designer lighting, and bespoke bedroom furniture."
   },
   {
     q: "2. How can I place an order?",
-    a: "You can place an order directly through our website by adding items to your cart and following the checkout process. We also accept orders through our official social media platforms."
+    a: "You can place an order directly through our website by adding your favorite pieces to the cart and following the secure checkout process. We also offer personalized consultations."
   },
   {
     q: "3. What payment methods do you accept?",
-    a: "We accept payments via UPI (GPay, PhonePe, Paytm), Debit/Credit cards, Net Banking, and other secure payment options available via our Razorpay gateway."
+    a: "We accept payments via UPI, Debit/Credit cards, Net Banking, and other secure options. For large furniture orders, we offer flexible payment plans via our partners."
   },
   {
     q: "4. Do you offer Cash on Delivery (COD)?",
-    a: "Currently, we only accept prepaid orders to ensure the fastest processing and delivery times. This helps us maintain our premium service standards."
+    a: "Due to the high-value and custom nature of our furniture, we only accept prepaid orders to ensure the highest standards of handling and delivery."
   },
   {
     q: "5. How long does shipping take?",
-    a: "Orders are typically processed within 2–5 business days. Delivery usually takes 3–10 business days depending on your location and the shipping method selected."
+    a: "Furniture orders are typically dispatched within 7–14 business days. Delivery times vary based on your location and the complexity of the piece (bespoke items may take longer)."
   },
   {
     q: "6. How can I track my order?",
-    a: "Once your order is shipped, you will receive a tracking link via SMS, email, or WhatsApp to monitor your delivery status in real-time. You can also track it on our 'Track Order' page."
+    a: "Once your order is dispatched, you will receive real-time tracking updates via SMS, email, and WhatsApp. You can also monitor your order status on our dedicated 'Track Order' page."
   },
   {
     q: "7. What is your return and exchange policy?",
-    a: "Returns and exchanges are only applicable if the product is defective, damaged, or incorrect at the time of delivery. You must notify us within 48 hours of delivery with photo or video proof. Products must be unused, unwashed, and with original tags intact. We do not accept returns for size issues, color preferences, or change of mind."
+    a: "Returns are accepted if the furniture is defective or damaged at the time of delivery. You must notify us within 48 hours with proof. Since our pieces are built to order, we do not accept returns for dimension issues or change of mind."
   },
   {
-    q: "8. What should I do if I receive a damaged or wrong product?",
-    a: "Please contact us within 48 hours of delivery with proper proof (photos/videos). After verification, we will arrange a replacement or refund immediately."
+    q: "8. What should I do if I receive damaged furniture?",
+    a: "Please inspect your furniture at the time of delivery. If you notice any damage, report it to the delivery team immediately and contact us with proof within 48 hours for a swift resolution."
   },
   {
-    q: "9. Can I cancel my order?",
-    a: "Orders can be canceled only before they are dispatched. Once an order has been shipped, cancellations, modifications, or address changes will not be accepted."
+    q: "9. Can I customize my furniture?",
+    a: "Yes! Many of our pieces offer customization in terms of fabrics, finishes, and dimensions. Contact our design experts for a personalized consultation."
   },
   {
-    q: "10. Do you restock sold-out items?",
-    a: "Many of our popular items are restocked based on demand. Follow us on Instagram for the latest updates on restocks and new drops."
+    q: "10. Do you provide installation?",
+    a: "Absolutely. We provide professional white-glove delivery and installation for all large furniture items to ensure they are perfectly set up in your home."
   },
   {
-    q: "11. How do I choose the right size?",
-    a: "We highly recommend checking our detailed size chart available on every product page before placing an order. If you're unsure, feel free to contact us for guidance."
+    q: "11. How do I choose the right dimensions?",
+    a: "We provide detailed dimension guides on every product page. We strongly recommend measuring your space before ordering. If you need help, our interior experts are just a call away."
   },
   {
     q: "12. How can I contact you?",
-    a: "For any queries or support, reach out to us via:\n📧 Email: support@soulfit.com\n📱 Instagram: @soulfit.in_"
+    a: "For design consultations or support, reach out to us via:\n📧 Email: support@gharsaa.in\n📱 Instagram: @gharsaa.in"
   }
 ];
 
@@ -62,7 +62,7 @@ export default function FAQPage() {
       <div className="faq-container">
         <div className="faq-header">
           <h1 className="faq-title">Frequently Asked Questions</h1>
-          <p className="faq-subtitle">Everything you need to know about Soul Fit products and policies.</p>
+          <p className="faq-subtitle">Everything you need to know about Ghar Saaj products and policies.</p>
         </div>
 
         <div className="faq-list">

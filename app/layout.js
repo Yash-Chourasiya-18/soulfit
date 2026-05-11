@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
 
 export const metadata = {
-  title: 'Soul Fit – Threads That Connect Souls',
-  description: 'Soul Fit – Premium clothing brand. Shop T-Shirts, Shirts, Pants, Cargos. Threads that connect souls.',
+  title: 'GHARSAAJ – Elevate Your Home with Luxury Furniture',
+  description: 'GHARSAAJ – Premium furniture shopping and interior design. Shop Luxury Sofas, Dining Tables, Beds, and Decor. Crafting spaces that resonate with your soul.',
 };
 
 export default function RootLayout({ children }) {

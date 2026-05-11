@@ -28,22 +28,33 @@ export function AppProvider({ children }) {
   useEffect(() => {
     try {
       if (typeof window !== "undefined") {
-        const user = JSON.parse(localStorage.getItem("sf_user"));
+        const user = JSON.parse(localStorage.getItem("gs_user"));
         if (user) setCurrentUser(user);
         
-        const cart = JSON.parse(localStorage.getItem("sf_cart"));
-        if (cart) setCartItems(cart);
+        const cart = JSON.parse(localStorage.getItem("gs_cart"));
+        if (cart) {
+          // Robust Migration: Only keep items that are NOT from the legacy sf_ collection
+          const filteredCart = cart.filter(item => 
+            item && item.image && !item.image.includes('sf_') && !item.image.includes('cat_')
+          );
+          setCartItems(filteredCart);
+        }
         
-        const wishlist = JSON.parse(localStorage.getItem("sf_wishlist"));
-        if (wishlist) setWishlistItems(wishlist);
+        const wishlist = JSON.parse(localStorage.getItem("gs_wishlist"));
+        if (wishlist) {
+          const filteredWishlist = wishlist.filter(item => 
+            item && item.image && !item.image.includes('sf_') && !item.image.includes('cat_')
+          );
+          setWishlistItems(filteredWishlist);
+        }
         
-        const orders = JSON.parse(localStorage.getItem("sf_orders"));
+        const orders = JSON.parse(localStorage.getItem("gs_orders"));
         if (orders) setOrderHistory(orders);
 
-        const cards = JSON.parse(localStorage.getItem("sf_cards"));
+        const cards = JSON.parse(localStorage.getItem("gs_cards"));
         if (cards) setSavedCards(cards);
 
-        const addresses = JSON.parse(localStorage.getItem("sf_addresses"));
+        const addresses = JSON.parse(localStorage.getItem("gs_addresses"));
         if (addresses) setSavedAddresses(addresses);
       }
     } catch (e) {
@@ -53,27 +64,27 @@ export function AppProvider({ children }) {
 
   // Save changes to localStorage
   useEffect(() => {
-    if (currentUser !== null) localStorage.setItem("sf_user", JSON.stringify(currentUser));
+    if (currentUser !== null) localStorage.setItem("gs_user", JSON.stringify(currentUser));
   }, [currentUser]);
 
   useEffect(() => {
-    localStorage.setItem("sf_cart", JSON.stringify(cartItems));
+    localStorage.setItem("gs_cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
-    localStorage.setItem("sf_wishlist", JSON.stringify(wishlistItems));
+    localStorage.setItem("gs_wishlist", JSON.stringify(wishlistItems));
   }, [wishlistItems]);
 
   useEffect(() => {
-    localStorage.setItem("sf_orders", JSON.stringify(orderHistory));
+    localStorage.setItem("gs_orders", JSON.stringify(orderHistory));
   }, [orderHistory]);
 
   useEffect(() => {
-    localStorage.setItem("sf_cards", JSON.stringify(savedCards));
+    localStorage.setItem("gs_cards", JSON.stringify(savedCards));
   }, [savedCards]);
 
   useEffect(() => {
-    localStorage.setItem("sf_addresses", JSON.stringify(savedAddresses));
+    localStorage.setItem("gs_addresses", JSON.stringify(savedAddresses));
   }, [savedAddresses]);
 
   const deliveryFee = 50;
@@ -167,7 +178,7 @@ export function AppProvider({ children }) {
 
   const logout = () => {
     setCurrentUser(null);
-    localStorage.removeItem("sf_user");
+    localStorage.removeItem("gs_user");
     showToast("Logged out successfully");
   };
 

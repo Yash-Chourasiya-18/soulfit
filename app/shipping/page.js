@@ -22,7 +22,7 @@ export default function ShippingPage() {
           <li>Weather conditions</li>
           <li>Unexpected logistical challenges</li>
         </ul>
-        <p style={{ marginBottom: '24px' }}>Soul Fit is not liable for such unexpected delays but we will always assist you in tracking your package.</p>
+        <p style={{ marginBottom: '24px' }}>GHARSAAJ is not liable for such unexpected delays but we will always assist you in tracking your package.</p>
 
         <div style={{ marginTop: '60px', padding: '24px', background: '#f9f9f9', borderRadius: '12px', textAlign: 'center' }}>
           <p style={{ fontWeight: 600, color: 'var(--black)' }}>Need help tracking your order?</p>

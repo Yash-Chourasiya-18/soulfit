@@ -28,8 +28,8 @@ export default function SupportPage() {
   return (
     <div className="support-container">
       <div className="supp-header">
-        <h1 className="supp-title">Contact Support</h1>
-        <p className="supp-subtitle">We typically reply within 24 hours. How can we help you today?</p>
+        <h1 className="supp-title">Contact Our Experts</h1>
+        <p className="supp-subtitle">Our design team typically replies within 24 hours. How can we help you elevate your home today?</p>
       </div>
 
       <div className="support-content-layout">
@@ -64,7 +64,7 @@ export default function SupportPage() {
               <input 
                 type="text" 
                 name="subject" 
-                placeholder="How can we help?" 
+                placeholder="Inquiry about product, order, or design..." 
                 value={formData.subject} 
                 onChange={handleChange} 
                 required 
@@ -91,23 +91,23 @@ export default function SupportPage() {
             <p className="reply-notice">We reply within 24 hours</p>
             
             <div className="contact-links">
-              <a href="mailto:support@soulfit.com" className="contact-link-item">
+              <a href="mailto:support@gharsaa.in" className="contact-link-item">
                 <div className="icon-circle">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div>
                   <h4>Email</h4>
-                  <p>support@soulfit.com</p>
+                  <p>support@gharsaa.in</p>
                 </div>
               </a>
 
-              <a href="https://instagram.com/soulfit.in" target="_blank" rel="noopener noreferrer" className="contact-link-item">
+              <a href="https://instagram.com/gharsaa.in" target="_blank" rel="noopener noreferrer" className="contact-link-item">
                 <div className="icon-circle">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </div>
                 <div>
                   <h4>Instagram</h4>
-                  <p>@soulfit.in</p>
+                  <p>@gharsaa.in</p>
                 </div>
               </a>
 

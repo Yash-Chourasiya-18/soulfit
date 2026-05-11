@@ -8,10 +8,10 @@ import { products } from '../../lib/products';
 import './shop.css';
 
 const CATEGORIES = [
-  { id: 'T-shirt', name: 'T-Shirts', img: 'sf_tshirt.png' },
-  { id: 'Shirt', name: 'Shirts', img: 'sf_shirt.png' },
-  { id: 'Pant', name: 'Pants', img: 'sf_pant.png' },
-  { id: 'Cargo', name: 'Cargos', img: 'sf_cargo.png' },
+  { id: 'Sofa', name: 'Sofas', img: 'cat_sofa.png' },
+  { id: 'Dining', name: 'Dining', img: 'cat_dining.png' },
+  { id: 'Bed', name: 'Beds', img: 'cat_bed.png' },
+  { id: 'Lighting', name: 'Lighting', img: 'cat_lighting.png' },
 ];
 
 function ShopContent() {
@@ -55,10 +55,10 @@ function ShopContent() {
   }
 
   if (filters.priceRange !== 'all') {
-    if (filters.priceRange === 'under-500') filtered = filtered.filter(p => p.price < 500);
-    else if (filters.priceRange === '500-999') filtered = filtered.filter(p => p.price >= 500 && p.price <= 999);
-    else if (filters.priceRange === '1000-1499') filtered = filtered.filter(p => p.price >= 1000 && p.price <= 1499);
-    else if (filters.priceRange === 'above-1500') filtered = filtered.filter(p => p.price >= 1500);
+    if (filters.priceRange === 'under-20k') filtered = filtered.filter(p => p.price < 20000);
+    else if (filters.priceRange === '20k-50k') filtered = filtered.filter(p => p.price >= 20000 && p.price <= 50000);
+    else if (filters.priceRange === '50k-100k') filtered = filtered.filter(p => p.price >= 50000 && p.price <= 100000);
+    else if (filters.priceRange === 'above-100k') filtered = filtered.filter(p => p.price >= 100000);
   }
 
   if (filters.sizes.length > 0) {

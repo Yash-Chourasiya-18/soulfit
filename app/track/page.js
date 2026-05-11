@@ -47,11 +47,11 @@ export default function TrackPage() {
       </div>
       <div className="track-orders-list">
         <div className="track-order-item">
-          <img src="/sf_tshirt.png" alt="Order" className="track-order-img" />
+          <img src="/products/velvet_sectional.png" alt="Order" className="track-order-img" />
           <div className="track-order-info">
-            <h4>Order #SF12345</h4>
+            <h4>Order #GHAR12345</h4>
             <p>Placed on 20 May 2024</p>
-            <span>₹1,299 &bull; 2 Items</span>
+            <span>₹89,999 &bull; 1 Item</span>
           </div>
           <div className="track-order-status-block">
             <div className="track-status-badge status-delivered">Delivered</div>
@@ -61,11 +61,11 @@ export default function TrackPage() {
         </div>
 
         <div className="track-order-item">
-          <img src="/sf_cargo.png" alt="Order" className="track-order-img" />
+          <img src="/products/marble_dining_set.png" alt="Order" className="track-order-img" />
           <div className="track-order-info">
-            <h4>Order #SF12344</h4>
+            <h4>Order #GHAR12344</h4>
             <p>Placed on 18 May 2024</p>
-            <span>₹2,398 &bull; 3 Items</span>
+            <span>₹1,45,000 &bull; 1 Item</span>
           </div>
           <div className="track-order-status-block">
             <div className="track-status-badge status-transit">In Transit</div>
@@ -75,11 +75,11 @@ export default function TrackPage() {
         </div>
 
         <div className="track-order-item">
-          <img src="/sf_shirt.png" alt="Order" className="track-order-img" />
+          <img src="/products/crystal_chandelier.png" alt="Order" className="track-order-img" />
           <div className="track-order-info">
-            <h4>Order #SF12343</h4>
+            <h4>Order #GHAR12343</h4>
             <p>Placed on 16 May 2024</p>
-            <span>₹1,199 &bull; 1 Item</span>
+            <span>₹24,999 &bull; 1 Item</span>
           </div>
           <div className="track-order-status-block">
             <div className="track-status-badge status-processing">Processing</div>

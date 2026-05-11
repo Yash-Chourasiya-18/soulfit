@@ -78,7 +78,7 @@ export default function AdminLayout({ children }) {
       {/* Sidebar */}
       <aside style={sidebarStyle}>
         <div style={{ padding: '0 30px 40px', display: 'flex', alignItems: 'center' }}>
-          <span style={{ fontSize: '24px', fontWeight: '900', letterSpacing: '2px', color: '#000' }}>SOULFIT</span>
+          <span style={{ fontSize: '24px', fontWeight: '900', letterSpacing: '2px', color: '#000' }}>GHAR SAAJ</span>
         </div>
 
         <nav style={{ flex: 1, overflowY: 'auto', scrollbarWidth: 'none' }}>
@@ -110,8 +110,8 @@ export default function AdminLayout({ children }) {
             flexDirection: 'column',
             gap: '10px'
           }}>
-            <h4 style={{ margin: 0, fontSize: '16px', fontWeight: '800', color: '#000', position: 'relative', zIndex: 1 }}>New Collection</h4>
-            <p style={{ margin: 0, fontSize: '11px', color: '#666', maxWidth: '100px', position: 'relative', zIndex: 1 }}>Check out our latest arrivals</p>
+            <h4 style={{ margin: 0, fontSize: '16px', fontWeight: '800', color: '#000', position: 'relative', zIndex: 1 }}>Home Makeover</h4>
+            <p style={{ margin: 0, fontSize: '11px', color: '#666', maxWidth: '100px', position: 'relative', zIndex: 1 }}>Transform spaces with our signature sets</p>
             <button style={{ 
               backgroundColor: '#000', 
               color: '#fff', 
@@ -125,19 +125,19 @@ export default function AdminLayout({ children }) {
               marginTop: '5px',
               position: 'relative',
               zIndex: 1
-            }}>View Collection</button>
+            }}>Explore Catalog</button>
             <div style={{ 
               position: 'absolute', 
               right: '-10px', 
               bottom: '-10px', 
               width: '100px', 
               height: '130px', 
-              background: 'url("https://placehold.co/100x130?text=Model") center/cover no-repeat',
+              background: 'url("/products/velvet_sectional.png") center/cover no-repeat',
               opacity: 0.9
             }}></div>
           </div>
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <p style={{ fontSize: '10px', color: '#999', margin: 0 }}>© 2024 SoulFit Admin Panel</p>
+            <p style={{ fontSize: '10px', color: '#999', margin: 0 }}>&copy; 2024 Ghar Saaj Admin Panel</p>
             <p style={{ fontSize: '10px', color: '#999', margin: '2px 0' }}>All rights reserved.</p>
           </div>
         </div>

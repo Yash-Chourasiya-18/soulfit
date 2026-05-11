@@ -43,7 +43,7 @@ export async function POST(request) {
     await transporter.sendMail({
       from: `"${config.senderName}" <${config.senderEmail}>`,
       to: targetEmail,
-      subject: "SoulFit - SMTP Production Test",
+      subject: "Ghar Saaj - SMTP Production Test",
       text: "This is a secure production test email.",
       html: "<h3>Security Verified</h3><p>Your SMTP credentials have been successfully encrypted and tested.</p>",
     });
